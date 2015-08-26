@@ -1,7 +1,7 @@
 # Site settings
 
 title: Al7075-T6 Particle Distribution Impact on Multiaxial Lives
-header-img: img/rolls.jpg
+header-img: img/smelt.png
 email: pkern3@gatech.edu
 description: "This site is a class project page for ME 8883 at Georgia Tech. Our specific project intends to investigate the impact on particle distributions in Al 7075-T6"
 baseurl: "/ME8883"
