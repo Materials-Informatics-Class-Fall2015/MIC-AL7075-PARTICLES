@@ -1,13 +1,13 @@
 # Site settings
 
-title: Project Pages
-header-img: img/home-bg.jpg
-email: your-email@yourdomain.com
-description: "Write your site description here. It will be used as your sites meta description as well!"
-baseurl: "/project-pages"
-url: "http://matin-hub.github.io"
-github_username:  matin-hub
-project_repository: project-pages
+title: ME 8883 Aluminum 7075 Particle Distribution Impact on Multiaxial Lives
+header-img: img/10.png
+email: pkern3@gatech.edu
+description: "This site is a class project page for ME 8883 at Georgia Tech. Our specific project intends to investigate the impact on particle distributions in Al 7075-T6"
+baseurl: "/ME8883"
+url: "http://paulkern.github.io"
+github_username:  paulkern
+project_repository: ME8883
 
 # Build settings
 # Don't change these variables
