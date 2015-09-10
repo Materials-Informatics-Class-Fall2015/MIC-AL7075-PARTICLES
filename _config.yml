@@ -8,6 +8,7 @@ baseurl: "/MIC-AL7075-PARTICLES"
 url: "http://Materials-Informatics-Class-Fall2015.github.io"
 github_username:  paulkern
 project_repository: MIC-AL7075-PARTICLES
+disqus_shortname: project-pages
 
 # Build settings
 # Don't change these variables
