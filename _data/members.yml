@@ -1,20 +1,6 @@
 ﻿# Members
 
 - name: Paul Kern
-<<<<<<< HEAD
-  role: Data Scientist / Material Informatics
-  img: img/paul.jpeg
-  github: paulkern
-  bio: Paul Kern is in his second year as a Master's student in the George W. Woodruff School of Mechanical Engineering. He primarily works with Dr. David McDowell. Paul completed his Bachelor's in Mechanical Engineering from Georgia Tech in 2013.  
-  url: http://paulkern.github.io/
-   
-- name:	Chris Shartrand
-  role: Data Scientist / Material Informatics
-  img: img/chris.jpg
-  github: cshartrand
-  bio: Chris Shartrand is a first year PhD student in the H. Milton Stewart School of Industrial Engineering and Systems Engineering. He is a member of the FLAMEL NSF IGERT Program. Chris completed his Bachelor's in Applied Mathematics from SUNY Fredonia in 2014.
-  url: http://cshartrand.github.io/ 
-=======
   role: Material Simulation / Supporting Programming
   img: https://avatars3.githubusercontent.com/u/6454403?v=3&s=400
   github: paulkern
@@ -28,5 +14,4 @@
   github: cshartrand
   bio: Christopher attended the State University of New York at Fredonia where he earned a Bachelor Degree in Applied Mathematics. Christopher is now pursuing a PhD in Industrial Engineering under the FLAMEL program at Georgia Tech. 
   url: https://www.linkedin.com/pub/christopher-shartrand/46/645/1b9
->>>>>>> origin/gh-pages
   
