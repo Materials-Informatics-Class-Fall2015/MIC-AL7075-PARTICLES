@@ -21,131 +21,47 @@ vertical:		</section><section markdown="1">
 
 {{ page.horizontal }}
 <!-- Start Writing Below in Markdown -->
+## Background Knowledge ##
 
-## Background Knowledge
-
-Showcasing Presentation Features. This template is ideal for very quickly creating decent presentations when content and simplicity is more important than excessive styling. 
-
-{{ page.horizontal }}
-
-Seperate with {% raw  %}{{ page.horizontal }}{% endraw %} between content for horizontal slides.
+ - Aluminum Alloy consisting of Zinc,  Magnesium, Copper, Iron, Silicon, Manganese, Chromium, Zirconium, and Titanium.
+ - During processing it is common for μm-sized particles to become ingrained in the matrix
+ - Deformation can cause particles to become cracked or detached
+ - Cracks combined with stress can lead to failure in the alloy
 
 {{ page.vertical }}
 
-Seperate with {% raw  %}{{ page.vertical }}{% endraw %} between content for vertical slides.
+ ![A Cracked Particle](/MIC-AL7075-PARTICLES/img/crackedParticle.png)
 
 {{ page.horizontal }}
+## Importance ##
 
-Press ESC for a zoomed out overview of the presentation.
+ - AA7075 is commonly used in the construction of airframes
+ - Product failure = Costly
+ - Improved modeling can lead to prediction of microstructures that have a higher probability of cracking.
+ - Quantification of product quality.
+ 
+{{ page.horizontal }}
+## The Microstructure ##
+ - Particles are very stiff
+ - Tend to cluster and form "stringers" along the direction of the roll
+ - Use Pair Correlation Functions (PCF) to quantify probability of finding another cluster from a given point
+![A sample image of the PCF from the rolling plane](/MIC-AL7075-PARTICLES/img/pcf.png)
+{{ page.horizontal }}
+## Microstructure Property ##
+ - Fatigue Indicator Parameters (FIP) are used to quantify damage
+ - We will use the Fatemi-Socie FIP: FIP_F S=γ/2 (1+k(σ/σ_y ))
+ - An elastic-plastic constitutive model must be defined
+ - We are using a linear-elastic model for the stiff particles with: Young’s Modulus of 169 GPa and Poisson Ratio of 0.3
+ - Investigating the non-local averaged FIP surrounding the particles
+ - Averaging volume of ~5% particle volume will be used
+ 
+ {{ page.horizontal }}
+## Simulation ##
+![3D-Simulation of Particles](/MIC-AL7075-PARTICLES/img/Presentation%20Images/Particles_D3D.png)
 
 {{ page.horizontal }}
-
-Press B to pause the presentation.
-
-{{ page.horizontal }}
-
-#Headers
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-{{ page.horizontal }}
-
-#Styling
-
-**Bold**
-
-*Italics*
-
-***Bold and Italics***
-
-{{ page.horizontal }}
-
-Use MathJax for Math.
-
-$$ A = \pi r^2 $$
-
-{{ page.horizontal }}
-
-#Lists
-
-1. Item 1
-
-2. Item 2
-
-3. Item 
-
-{{ page.horizontal }}
-
-#Links
-
-[In-Line](https://www.google.com)
-
-[I'm a reference-style link 1][1]
-
-[I'm a reference-style link 1][2]
-
-[1]:https://www.mozilla.org
-[2]:http://www.reddit.com
-
-{{ page.horizontal }}
-
-#Images
-
-Alt-Click to zoom.
-
-![Description](/project-pages/img/Logo_Fairy_Tail_right.png)
-
-{{ page.horizontal }}
-
-#Code
-
-Inline `code`.
-
-{{ page.vertical }}
-
-#Code Block
-
-	import numpy as np
-	def _set_colors():
-    HighRGB = np.array([26, 152, 80]) / 255.
-
-{{ page.horizontal }}
-
-#Quotes
-
-> War does not decide who is right, only who is **left**.
-
-{{ page.horizontal }}
-
-#HTML
-
-Now, you CAN write in HTML using this template. If you want to create HTML presentations using this framework head over to [reveal.js](http://lab.hakim.se/reveal-js/#/) for reference.  For a power-point like interactive tool for creating presentations with this theme, check [slides.com](http://slides.com/).
-
-{{ page.vertical }}
-
-# Some HTML Functionality
-
-## Color and Alignment
-
-<p align="center">This text is centered.</p>
-
-<p style="color:red">This is a red text with <span style="color:blue">blue</span> and <span style="color:green">green</span> inline text.</p>
-
-{{ page.horizontal }}
-
-## STL
-
-<div align="center"><script src="https://embed.github.com/view/3d/matin-hub/project-pages/gh-pages/img/stl/test.stl"></script></div>
-
-{{ page.horizontal }}
-
-## Data Projector
-
-<embed src="/project-pages/projectors/projector0001/" height="500px" width="100%">
+## Two-Point Statistics ##
+![Two Point Statistics](/MIC-AL7075-PARTICLES/img/Presentation%20Images/2_point.png)
 
 <!-- End Here -->
 {{ page.horizontal }}
