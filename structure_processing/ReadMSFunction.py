@@ -37,7 +37,8 @@ def plotCorrelations(ms_list):
     prim_basis = PrimitiveBasis(n_states=2, domain=[1, 2])
     for i, ms in enumerate(ms_list):       
         X_ = prim_basis.discretize(ms)
-        X_corr = correlate(X_, periodic_axes=[0, 1])
+        print(X_.shape)
+        X_corr = correlate(X_)
         print X_corr[0].shape
         draw_correlations(X_corr[0])
     
