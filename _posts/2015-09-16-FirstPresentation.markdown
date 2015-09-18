@@ -55,7 +55,7 @@ vertical:		</section><section markdown="1">
 ## Microstructure Property ##
 
  - Fatigue Indicator Parameters (FIP) are used to quantify damage
- - We will use the Fatemi-Socie FIP: $FIP_F_S = \frac{\gamma}{2} ( 1 + k\frac{\sigma}{\sigma_y} )$
+ - We will use the Fatemi-Socie FIP: $FIP_{FS} = \frac{\gamma}{2} ( 1 + k\frac{\sigma}{\sigma_y} )$
  - An elastic-plastic constitutive model must be defined
  - We are using a linear-elastic model for the stiff particles with: Young’s Modulus of 169 GPa and Poisson Ratio of 0.3
  - Investigating the non-local averaged FIP surrounding the particles
