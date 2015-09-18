@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Proposed Methodology Copy
+title: Proposed Methodology
 date: 2015-09-09 01:30
 author: Paul Kern
 tags: background information
