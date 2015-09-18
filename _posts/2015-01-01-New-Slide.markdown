@@ -21,6 +21,7 @@ vertical:		</section><section markdown="1">
 
 {{ page.horizontal }}
 <!-- Start Writing Below in Markdown -->
+
 ## Background Knowledge ##
 
  - Aluminum Alloy consisting of Zinc,  Magnesium, Copper, Iron, Silicon, Manganese, Chromium, Zirconium, and Titanium.
@@ -33,6 +34,7 @@ vertical:		</section><section markdown="1">
  ![A Cracked Particle](/MIC-AL7075-PARTICLES/img/crackedParticle.png)
 
 {{ page.horizontal }}
+
 ## Importance ##
 
  - AA7075 is commonly used in the construction of airframes
@@ -41,13 +43,17 @@ vertical:		</section><section markdown="1">
  - Quantification of product quality.
  
 {{ page.horizontal }}
+
 ## The Microstructure ##
  - Particles are very stiff
  - Tend to cluster and form "stringers" along the direction of the roll
  - Use Pair Correlation Functions (PCF) to quantify probability of finding another cluster from a given point
 ![A sample image of the PCF from the rolling plane](/MIC-AL7075-PARTICLES/img/pcf.png)
+
 {{ page.horizontal }}
+
 ## Microstructure Property ##
+
  - Fatigue Indicator Parameters (FIP) are used to quantify damage
  - We will use the Fatemi-Socie FIP: FIP_F S=γ/2 (1+k(σ/σ_y ))
  - An elastic-plastic constitutive model must be defined
@@ -56,12 +62,15 @@ vertical:		</section><section markdown="1">
  - Averaging volume of ~5% particle volume will be used
  
  {{ page.horizontal }}
+ 
 ## Simulation ##
-![3D-Simulation of Particles](/MIC-AL7075-PARTICLES/img/Presentation%20Images/Particles_D3D.png)
+
+![3D-Simulation of Particles](/MIC-AL7075-PARTICLES/img/Presentation_Images/Particles_D3D.png)
 
 {{ page.horizontal }}
+
 ## Two-Point Statistics ##
-![Two Point Statistics](/MIC-AL7075-PARTICLES/img/Presentation%20Images/2_point.png)
+![Two Point Statistics](/MIC-AL7075-PARTICLES/img/Presentation_Images/2_point.png)
 
 <!-- End Here -->
 {{ page.horizontal }}

@@ -53,10 +53,10 @@ vertical:		</section><section markdown="1">
  - $n=2$ is linear-elastic particle
  - Our overall goal is to test various biaxiality and strain range conditions
  - Hopefully we can repeat with a Crystal Plasticity model if our initial results are promising 
-![3D-Simulation of Particles](/MIC-AL7075-PARTICLES/img/Presentation%20Images/Particles_D3D.png)
+![3D-Simulation of Particles](/MIC-AL7075-PARTICLES/img/Presentation_Images/Particles_D3D.png)
 {{ page.horizontal }}
 ##Two-Point Statistics ##
-![Two Point Statistics](/MIC-AL7075-PARTICLES/img/Presentation%20Images/2_point.png)
+![Two Point Statistics](/MIC-AL7075-PARTICLES/img/Presentation_Images/2_point.png)
 
 
 
