@@ -20,7 +20,7 @@ $$
 FIP_FS = \frac{\gamma}{2} ( 1 + k\frac{\sigma}{\sigma_y} )
 $$
 In this equation $\sigma$ is the tension on the maximum shear plane, $\sigma_y$ is the cyclic yield stress, $\frac{\gamma}{2}$ is the maximum plastic shear and k is a calibration constant for multi-axial fatigue (usually taken as 0.5) [3].
-Since the FIP depends upon the elastic deformation, at the minimum an elastic-plastic constitutive model must be defined. In this case we are using a linear-elastic model for the stiff particles with a Young's Modulus of 169 GPa and Poisson Ratio of 0.3
+Since the FIP depends upon the plastic deformation, at the minimum an elastic-plastic constitutive model must be defined. In this case we are using a linear-elastic model for the stiff particles with a Young's Modulus of 169 GPa and Poisson Ratio of 0.3
 The elastic-plastic model defined for the aluminum matrix has a Young's Modulus of 69 GPa and Poisson Ratio of 0.345. The combined kinematic-isotropic hardening model uses the stresses and plastic strains from a calibrated crystal plasticity model.
 
 In this particular project, we will be investigating the non-local averaged FIP surrounding the particles. An averaging volume of ~5% particle volume will be used. The maximum of these FIP will determine the life-limiting crack extension into the matrix.
