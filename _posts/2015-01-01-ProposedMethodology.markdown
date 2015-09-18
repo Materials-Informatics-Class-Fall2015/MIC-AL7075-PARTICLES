@@ -17,7 +17,7 @@ We hope to use the Representative Volume Element (RVE) of particles matching the
 **The Property**
 Fatigue Indicator Parameters (FIP) are used to quantify damage, especially in metals. The most common FIP used in the McDowell lab to quantify fatigue lives is known as the Fatemi-Socie FIP and is defined as follows
 $$
-FIP_FS = \frac{\gamma}{2} ( 1 + k\frac{\sigma}{\sigma_y} )
+FIP_F_S = \frac{\gamma}{2} ( 1 + k\frac{\sigma}{\sigma_y} )
 $$
 In this equation $\sigma$ is the tension on the maximum shear plane, $\sigma_y$ is the cyclic yield stress, $\frac{\gamma}{2}$ is the maximum plastic shear and k is a calibration constant for multi-axial fatigue (usually taken as 0.5) [3].
 Since the FIP depends upon the plastic deformation, at the minimum an elastic-plastic constitutive model must be defined. In this case we are using a linear-elastic model for the stiff particles with a Young's Modulus of 169 GPa and Poisson Ratio of 0.3
