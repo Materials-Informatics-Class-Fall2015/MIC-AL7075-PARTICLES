@@ -3,7 +3,7 @@ layout:     	post
 title:      	Contrast Investigation
 date:       	2015-09-23 18:52
 author:     	Chris Shartrand
-tags:         result
+tags:         update
 ---
 As we have previously stated, our project involving AA 7075-T6 consists of two states, the matrix and the micron-sized particles.  It is known that the majority of these particles are either iron-aluminum based or magnesium-silicide based [1]. In general, it has been found that these course particles are between two and three times harder than the surrounding matrix [1]. In our opinion, it could be extremely beneficial to investigate the contrast of the microstructure in the case of the matrix and the particles.
 
