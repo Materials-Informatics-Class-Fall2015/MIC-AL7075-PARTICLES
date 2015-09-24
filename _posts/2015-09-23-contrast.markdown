@@ -1,4 +1,4 @@
----
+﻿---
 layout:     	post
 title:      	Contrast Investigation
 date:       	2015-09-23 18:52
