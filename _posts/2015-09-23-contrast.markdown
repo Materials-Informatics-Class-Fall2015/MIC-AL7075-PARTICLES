@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿---
-=======
 ---
->>>>>>> 33ccc6c430e2c341e186f16b07025438ed48bb54
 layout:     	post
 title:      	Contrast Investigation
 date:       	2015-09-23 18:52
