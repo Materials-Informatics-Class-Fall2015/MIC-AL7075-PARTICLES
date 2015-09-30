@@ -35,12 +35,23 @@ def readDirectory(directory):
     
 def plotCorrelations(ms_list):
     prim_basis = PrimitiveBasis(n_states=2, domain=[1, 2])
-    for i, ms in enumerate(ms_list):       
+    print(prim_basis)
+    for i, ms in enumerate(ms_list):
+        ms = np.expand_dims(ms, axis=0)
         X_ = prim_basis.discretize(ms)
         print(X_.shape)
         X_corr = correlate(X_)
         print X_corr[0].shape
-        draw_correlations(X_corr[0])
+        # average over z layers
+        avg_corr = np.zeros(X_corr[0].shape[:-2] + (X_corr[0].shape[-1],))
+        num_slices = X_corr[0].shape[-2]
+        for slice in range(num_slices):
+            avg_corr += X_corr[0][:,:,slice]/num_slices
+        for corr_num in range(X_corr[0].shape[-1]):
+            to_plot = avg_corr[:,:,corr_num]
+            to_plot = np.expand_dims(to_plot, axis=2)
+            print(to_plot.shape)
+            draw_correlations(to_plot)
     
 
 if __name__ == "__main__":

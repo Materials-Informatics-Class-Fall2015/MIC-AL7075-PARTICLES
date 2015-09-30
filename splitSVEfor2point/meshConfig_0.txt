@@ -1,0 +1,12 @@
+option	value
+dream3d	TRUE
+x	0.028
+y	0.028
+z	0.028
+banded	FALSE
+band_thickness	1
+repeat	FALSE
+geometry	smooth
+periodic	FALSE
+fromRVE	TRUE
+res	0.0007

@@ -1,0 +1,16 @@
+        parameter(           
+     &            num_slip_sys    = 12, ! Number of slip planes
+     &            Mantle_slip_sys    = 5, ! Number of slip planes
+     &            Core_slip_sys    = 2, ! Number of slip planes
+     &            max_loops       = 10, ! Number of loops to iterate in the line search 
+     &            Tolerance       = 0.000001, ! 
+     &            num_elem       = 64000, ! Number of elements
+     &            num_grains       = 21,  ! Number of grains
+     &            max_num_layers  = 51, ! ! Maximum number of layers
+     &            NumLayer_max  = 23, ! ! Maximum number of layers
+     &            NumLayer_min  = -26, ! ! Minimum number of layers
+     &            num_grain_fail = 20, ! ! Max number of grains to fail
+     &            num_elem_fail = 255, ! ! Max number of elements to fail
+     &            mesh_size  = 0.0007, ! ! mesh_size 
+     &            band_width  = 0.0007, ! ! width of the bands 
+     &            num_lines_Min_dist  = 0 ) ! ! Number of lines to read in Min_dis.txt 
