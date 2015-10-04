@@ -23,9 +23,12 @@ def readDirectory(directory):
         strain_f = open(f,"r")
         for line in strain_f:
         	strains = np.append(strains,float(line.split(",")[4]))
-        strains = np.reshape(strains, shape, order='F')
+        strains = np.reshape(strains, [1].extend(shape), order='F')
         elem_f.close()
         strain_list[num] = strains
+        
+	strain_list = np.concatenate(strain_list, axis=0)
+	print(strain_list.shape)
     return strain_list
     
 
