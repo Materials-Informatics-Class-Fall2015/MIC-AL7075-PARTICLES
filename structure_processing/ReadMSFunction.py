@@ -30,15 +30,16 @@ def readDirectory(directory):
         ms_f = np.reshape(ms_f, shape, order='F')
         elem_f.close()
         g_f.close()
-        ms_list[num] = ms_f
+        ms_f = np.expand_dims(ms, axis=0)
+        X_ = prim_basis.discretize(ms)
+        ms_list[num] = X_
     return ms_list
     
 def plotCorrelations(ms_list):
     prim_basis = PrimitiveBasis(n_states=2, domain=[1, 2])
     print(prim_basis)
-    for i, ms in enumerate(ms_list):
-        ms = np.expand_dims(ms, axis=0)
-        X_ = prim_basis.discretize(ms)
+    for i, X_ in enumerate(ms_list):
+        
         print(X_.shape)
         X_corr = correlate(X_)
         print X_corr[0].shape
