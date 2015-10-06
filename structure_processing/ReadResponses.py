@@ -18,18 +18,18 @@ def readDirectory(directory):
         elem_f.readline()
         line = elem_f.readline()
         shape = map(int, line.split(",")[:3])
-        new_shape = [1]
+        new_shape = [9,1]
         new_shape.extend(shape)
         f = os.path.join(directory, f)
         strains = np.asarray([])
         strain_f = open(f,"r")
         for line in strain_f:
-            strains = np.append(strains,float(line.split(",")[4]))
+            strains = np.append(strains,map(float,line.split(",")))
         strains = np.reshape(strains, new_shape, order='F')
         elem_f.close()
         strain_list[num] = strains
         
-    strain_list = np.concatenate(strain_list, axis=0)
+    strain_list = np.concatenate(strain_list, axis=1)
     print("final strains list size %s" % str(strain_list.shape))
     return strain_list
 

@@ -30,13 +30,20 @@ if __name__ == "__main__":
     prim_basis = PrimitiveBasis(n_states = 2)
     model = MKSLocalizationModel(basis = prim_basis)
     strain_list_train = RR.readDirectory(dir_train)
-    model.fit(ms_delta,strain_list_train)
-    coeff = model.coeff
-    draw_coeff(coeff[center])
-    ms_list = RMS.readDirectory(dir_test)
-    strain_pred = model.predict(ms_list)
-    print(strain_pred.shape)
+    tensor_comp = strain_list_train.shape[0]
     strain_list_test = RR.readDirectory(dir_test)
     print(strain_list_test.shape)
-    draw_strains_compare(strain_list_test[0,center],strain_pred[0,center])
-    draw_differences([strain_list_test[0,center]-strain_pred[0,center]],['Strain from Testing - MKS'])
+    num_ms = strain_list_test.shape[1]
+    ms_list = RMS.readDirectory(dir_test)
+    for i in range(tensor_comp):
+        temp_train = strain_list_train[i]
+        print(temp_train.shape)
+        print(ms_delta.shape)
+        model.fit(ms_delta,temp_train)
+        coeff = model.coeff
+        strain_pred = model.predict(ms_list)
+        draw_coeff(coeff[center])
+        for j in range(num_ms):
+            print(strain_pred.shape)
+            draw_strains_compare(strain_list_test[i,j,center],strain_pred[j,center])
+            draw_differences([strain_list_test[i,j,center]-strain_pred[j,center]],['Strain from Testing - MKS'])
