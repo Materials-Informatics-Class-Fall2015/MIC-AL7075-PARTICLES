@@ -19,20 +19,24 @@ if __name__ == "__main__":
     dir_test = os.getcwd()
     if(os.path.isdir(sys.argv[-1])):
         dir_test = sys.argv[-1]
-  	dir_train = os.getcwd()
+    dir_train = os.getcwd()
     if(os.path.isdir(sys.argv[-2])):
-        dir_train = sys.argv[-2]	
+        dir_train = sys.argv[-2]    
 
-	n = 21
-	center = (n - 1) / 2
-	ms_delta = make_delta_microstructures(n_phases = 2, size = (n,n,n))
-	draw_microstructures(ms_delta[:,center])
-	prim_basis = PrimitiveBasis(n_states = 2)
-	model = MKSLocalizationModel(basis = prim_basis)
-	strain_list_train = RR.readDirectory(dir_train)
-	model.fit(ms_delta,strain_list_train)
-	coeff = model.coeff
-	draw_coeff(coeff[center])
-	strain_pred = model.predict(ms_list)
-	draw_strains_compare(strain_list_test[0,center],strain_pred[0,center])
-	draw_differences([strain_list_test[0,center]-strain_pred[0,center]],['Strain from Testing - MKS'])
+    n = 21
+    center = (n - 1) / 2
+    ms_delta = make_delta_microstructures(n_phases = 2, size = (n,n,n))
+    draw_microstructures(ms_delta[:,center])
+    prim_basis = PrimitiveBasis(n_states = 2)
+    model = MKSLocalizationModel(basis = prim_basis)
+    strain_list_train = RR.readDirectory(dir_train)
+    model.fit(ms_delta,strain_list_train)
+    coeff = model.coeff
+    draw_coeff(coeff[center])
+    ms_list = RMS.readDirectory(dir_test)
+    strain_pred = model.predict(ms_list)
+    print(strain_pred.shape)
+    strain_list_test = RR.readDirectory(dir_test)
+    print(strain_list_test.shape)
+    draw_strains_compare(strain_list_test[0,center],strain_pred[0,center])
+    draw_differences([strain_list_test[0,center]-strain_pred[0,center]],['Strain from Testing - MKS'])

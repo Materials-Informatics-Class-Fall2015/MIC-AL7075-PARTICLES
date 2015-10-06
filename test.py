@@ -45,10 +45,13 @@ np.random.seed(99)
 t = tm.time.time()
 X, strain = make_elastic_FE_strain_random(n_samples=1, elastic_modulus=elastic_modulus,
                                           poissons_ratio=poissons_ratio, size=size, macro_strain=macro_strain)
+                 
 print 'Elapsed Time',(tm.time.time() - t), 'Seconds'
 draw_microstructure_strain(X[0, center] , strain[0, center])
 
 t = tm.time.time()
+print("The type of data that must be input to the predict function is of type: %s" % str(type(X)))
+print("shape: %s" % str(X.shape))
 strain_pred = model.predict(X)
 print 'Elapsed Time',tm.time.time() - t,'Seconds'
 

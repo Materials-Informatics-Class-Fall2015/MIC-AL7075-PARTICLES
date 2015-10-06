@@ -8,7 +8,7 @@ import numpy as np
 def readDirectory(directory):
     filenames=[]
     for f in os.listdir(directory):
-        if(f.find("s_el_max")!=-1):
+        if(f.find("E_el_min1")!=-1):
             filenames.append(f)
     strain_list = [0]*len(filenames)
     for f in filenames:
@@ -18,19 +18,20 @@ def readDirectory(directory):
         elem_f.readline()
         line = elem_f.readline()
         shape = map(int, line.split(",")[:3])
+        new_shape = [1]
+        new_shape.extend(shape)
         f = os.path.join(directory, f)
         strains = np.asarray([])
         strain_f = open(f,"r")
         for line in strain_f:
-        	strains = np.append(strains,float(line.split(",")[4]))
-        strains = np.reshape(strains, [1].extend(shape), order='F')
+            strains = np.append(strains,float(line.split(",")[4]))
+        strains = np.reshape(strains, new_shape, order='F')
         elem_f.close()
         strain_list[num] = strains
         
-	strain_list = np.concatenate(strain_list, axis=0)
-	print(strain_list.shape)
+    strain_list = np.concatenate(strain_list, axis=0)
+    print("final strains list size %s" % str(strain_list.shape))
     return strain_list
-    
 
 
 if __name__ == "__main__":

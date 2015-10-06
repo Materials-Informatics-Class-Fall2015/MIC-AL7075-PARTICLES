@@ -5,10 +5,9 @@ from pymks.tools import draw_correlations
 import numpy as np
 
 def readDirectory(directory):
-	prim_basis = PrimitiveBasis(n_states=2, domain=[1, 2])
-	filenames=[]
-	for f in os.listdir(directory):
-    	print(f)
+    prim_basis = PrimitiveBasis(n_states=2, domain=[1, 2])
+    filenames=[]
+    for f in os.listdir(directory):
         if(f.find("trial_Phases")!=-1 and f.find("_old")==-1):
             filenames.append(f)
     ms_list = [0]*len(filenames)
@@ -19,6 +18,8 @@ def readDirectory(directory):
         elem_f.readline()
         line = elem_f.readline()
         shape = map(int, line.split(",")[:3])
+        new_shape = [1]
+        new_shape.extend(shape)
         f = os.path.join(directory, f)
         g_f = open(f, "r")
         g_f.readline()
@@ -27,21 +28,22 @@ def readDirectory(directory):
             grains = np.append(grains, int(line))
         ms_f = np.asarray([])
         for line in elem_f:
-            ms_f = np.append(ms_f, grains[int(line)-1])
-        ms_f = np.reshape(ms_f, [1].extend(shape), order='F')
+            ms_f = np.append(ms_f, grains[int(line)-1]-1)
+        
+        ms_f = np.reshape(ms_f, new_shape, order='F')
         elem_f.close()
         g_f.close()
-        ms_f = np.expand_dims(ms_f, axis=0)
-        X_ = prim_basis.discretize(ms_f)
-        print(X_.shape)
-        ms_list[num] = X_
-	ms_list = np.concatenate(ms_list, axis=0)
-	print(ms_list.shape)
+        
+        ms_list[num] = ms_f
+    ms_list = np.concatenate(ms_list, axis=0)
+    print("final MS List shape: %s" % str(ms_list.shape))
     return ms_list
     
 def plotCorrelations(ms_list):
+    prim_basis = PrimitiveBasis(n_states=2, domain=[0, 1])
     for i, X_ in enumerate(ms_list):
-        
+        X_ = np.expand_dims(X_, axis=0)
+        X_ = prim_basis.discretize(X_)
         print(X_.shape)
         X_corr = correlate(X_)
         print X_corr[0].shape
