@@ -11,6 +11,7 @@ def readDirectory(directory):
         if(f.find("E_el_min1")!=-1):
             filenames.append(f)
     strain_list = [0]*len(filenames)
+    voigt = [0,4,8,1,2,5]
     for f in filenames:
         num = int(f[f.rfind("_")+1:f.rfind(".csv")])
         elem_f = os.path.join(directory, "trial_elem_grains_%d.txt" % num)
@@ -18,13 +19,16 @@ def readDirectory(directory):
         elem_f.readline()
         line = elem_f.readline()
         shape = map(int, line.split(",")[:3])
-        new_shape = [9,1]
+        new_shape = [6,1]
         new_shape.extend(shape)
         f = os.path.join(directory, f)
         strains = np.asarray([])
         strain_f = open(f,"r")
         for line in strain_f:
-            strains = np.append(strains,map(float,line.split(",")))
+            temp = map(float,line.split(","))
+            temp = np.asarray(temp)
+            temp = temp[voigt]
+            strains = np.append(strains,temp)
         strains = np.reshape(strains, new_shape, order='F')
         elem_f.close()
         strain_list[num] = strains
