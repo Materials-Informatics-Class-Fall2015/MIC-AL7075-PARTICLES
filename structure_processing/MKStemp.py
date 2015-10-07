@@ -58,7 +58,7 @@ if __name__ == "__main__":
         for j in range(num_ms):
             pass
             # draw_strains_compare(strain_list_test[i,j,center],strain_pred[j,center],label=labels[i])
-            # draw_differences([strain_list_test[i,j,center]-strain_pred[j,center]],['Strain from Testing MS %d - MKS'])
+            # draw_differences([strain_list_test[i,j,center]-strain_pred[j,center]],['FE - MKS for Microstructure %d' % (j+1)])
         temp_data = np.append(temp_data, np.expand_dims(strain_pred,axis=0), axis=0)
     output_data = np.concatenate((output_data, temp_data), axis=1)
             
