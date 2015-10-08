@@ -12,7 +12,7 @@ tags:         result
  - Data formats​
  - Workflow​
  - Preliminary Analysis
-![](/MIC-AL7075-PARTICLES/tree/gh-pages/img/Presentation_Images/Pres2_Img3)
+![](/MIC-AL7075-PARTICLES/tree/gh-pages/img/Presentation_Images/Pres2_Img3.png)
 
 ## Where We've Been and Where We are Going ##
 Goal still to use meta-model to predict life damaging nature of particle clusters in multiaxial fatigue. We are not using techniques talked about so far in class. We are using the localization technique briefly introduced in the workshop where we quantify uncertainties associated with MKS prediction of multiaxial fatigue.
@@ -24,7 +24,7 @@ We are interested in stability of predictions and measures of dispersion between
  -DoE.csv mapping folder # to load conditions
  - Elem_grain_#.txt
  - Strain_#.txt
- ![](/MIC-AL7075-PARTICLES/tree/gh-pages/img/Presentation_Images/Pres2_Img1)
+ ![](/MIC-AL7075-PARTICLES/tree/gh-pages/img/Presentation_Images/Pres2_Img1.png)
 
 Training
  - Simulate delta microstructures (2-phase so same as example online), predict full tensor necessary because of the multiaxial nature, store influence coefficients for later use
@@ -32,7 +32,7 @@ Testing
  - Same size MS, compare to FEM, currently test at same loads
 Predicting
  - Slicing of larger microstructure, expand coefficients, use strains to predict local plasticity and recover FIP
-![](/MIC-AL7075-PARTICLES/tree/gh-pages/img/Presentation_Images/Pres2_Img2)
+![](/MIC-AL7075-PARTICLES/tree/gh-pages/img/Presentation_Images/Pres2_Img2.png)
 
 ## Source ##
 https://commons.wikimedia.org/wiki/File:Stress_Strain_Ductile_Material.pdf
