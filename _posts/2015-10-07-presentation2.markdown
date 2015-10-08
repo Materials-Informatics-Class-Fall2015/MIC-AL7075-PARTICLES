@@ -37,5 +37,5 @@ We are interested in stability of predictions and measures of dispersion between
 The distribution of difference between FE and MKS is seen below
 ![D](/MIC-AL7075-PARTICLES/img/Presentation_Images/KD-Tensor11-1.jpeg)
 
-## Source ##
+**Source**
 https://commons.wikimedia.org/wiki/File:Stress_Strain_Ductile_Material.pdf
