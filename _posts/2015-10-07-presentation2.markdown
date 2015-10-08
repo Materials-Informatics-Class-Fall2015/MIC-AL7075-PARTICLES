@@ -23,14 +23,14 @@ We are interested in stability of predictions and measures of dispersion between
  -DoE.csv mapping folder # to load conditions
  - Elem_grain_#.txt
  - Strain_#.txt
- ![B](/MIC-AL7075-PARTICLES/img/Presentation_Images/Pres2-Img1.png)
+ ![A](/MIC-AL7075-PARTICLES/img/Presentation_Images/Pres2-Img1.png)
 **Training**
  - Simulate delta microstructures (2-phase so same as example online), predict full tensor necessary because of the multiaxial nature, store influence coefficients for later use
 **Testing**
  - Same size MS, compare to FEM, currently test at same loads
 **Predicting**
  - Slicing of larger microstructure, expand coefficients, use strains to predict local plasticity and recover FIP
-![C](/MIC-AL7075-PARTICLES/img/Presentation_Images/Pres2-Img2.png)
+![A](/MIC-AL7075-PARTICLES/img/Presentation_Images/Pres2-Img2.png)
 
 The distribution of difference between FE and MKS is seen below
 ![D](/MIC-AL7075-PARTICLES/img/Presentation_Images/KD-Tensor11-1.jpeg)
