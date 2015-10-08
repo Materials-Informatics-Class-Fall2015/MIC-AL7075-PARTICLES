@@ -13,7 +13,6 @@ tags: result
  - Workflow​
  - Preliminary Analysis
 ![A](/MIC-AL7075-PARTICLES/img/Presentation_Images/Pres2_Img3.png)
-
 **Where We've Been and Where We are Going**
 Goal still to use meta-model to predict life damaging nature of particle clusters in multiaxial fatigue. We are not using techniques talked about so far in class. We are using the localization technique briefly introduced in the workshop where we quantify uncertainties associated with MKS prediction of multiaxial fatigue.
 We are interested in stability of predictions and measures of dispersion between small test microstructures and MKS predictions.
@@ -25,7 +24,6 @@ We are interested in stability of predictions and measures of dispersion between
  - Elem_grain_#.txt
  - Strain_#.txt
  ![B](/MIC-AL7075-PARTICLES/img/Presentation_Images/Pres2_Img1.png)
-
 **Training**
  - Simulate delta microstructures (2-phase so same as example online), predict full tensor necessary because of the multiaxial nature, store influence coefficients for later use
 **Testing**
