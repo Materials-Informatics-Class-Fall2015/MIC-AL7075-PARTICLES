@@ -16,9 +16,9 @@ tags: result
 **Where We've Been and Where We are Going**
 Goal still to use meta-model to predict life damaging nature of particle clusters in multiaxial fatigue. We are not using techniques talked about so far in class. We are using the localization technique briefly introduced in the workshop where we quantify uncertainties associated with MKS prediction of multiaxial fatigue.
 We are interested in stability of predictions and measures of dispersion between small test microstructures and MKS predictions.
- - Microstructure – array(#loads,#ms,x,y,z)
- - Strains – array(#loads,6,#ms,x,y,z)
- - Models – array(#loads,6)
+ - Microstructure array(#loads,#ms,x,y,z)
+ - Strains array(#loads,6,#ms,x,y,z)
+ - Models array(#loads,6)
  - Base Folder
  -DoE.csv mapping folder # to load conditions
  - Elem_grain_#.txt
