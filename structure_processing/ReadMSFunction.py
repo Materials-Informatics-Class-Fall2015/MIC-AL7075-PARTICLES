@@ -23,12 +23,12 @@ def readDirectory(directory):
         f = os.path.join(directory, f)
         g_f = open(f, "r")
         g_f.readline()
-        grains = np.asarray([])
+        phases = np.asarray([])
         for line in g_f:
-            grains = np.append(grains, int(line))
+            phases = np.append(phases, int(line))
         ms_f = np.asarray([])
         for line in elem_f:
-            ms_f = np.append(ms_f, grains[int(line)-1]-1)
+            ms_f = np.append(ms_f, phases[int(line)-1]-1)
         
         ms_f = np.reshape(ms_f, new_shape, order='F')
         elem_f.close()

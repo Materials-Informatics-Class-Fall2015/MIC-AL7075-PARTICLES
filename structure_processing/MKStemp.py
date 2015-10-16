@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import copy
 import matplotlib.pyplot as plt
 from pymks.tools import draw_microstructures
 from pymks.datasets import make_delta_microstructures
@@ -11,6 +12,7 @@ from pymks.tools import draw_coeff
 from pymks.datasets import make_elastic_FE_strain_random
 from pymks.tools import draw_strains_compare
 from pymks.tools import draw_differences
+import pymks.tools as pt
 import ReadResponses as RR
 import ReadMSFunction as RMS
 
@@ -22,22 +24,26 @@ if __name__ == "__main__":
     dir_train = os.getcwd()
     if(os.path.isdir(sys.argv[-2])):
         dir_train = sys.argv[-2]
+    if(len(sys.argv) > 2 and os.path.isdir(sys.argv[-3])):
+        dir_predict = sys.argv[-1]
+        dir_test = sys.argv[-2]
+        dir_train = sys.argv[-3]
         
     labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
-    n = 21
+    
+    strain_list_train = RR.readDirectory(dir_train)
+    tensor_comp = strain_list_train.shape[0]
+    
+    n = strain_list_train.shape[3]
     center = (n - 1) / 2
     
     ms_delta = make_delta_microstructures(n_phases = 2, size = (n,n,n))
     # draw_microstructures(ms_delta[:,center])
     prim_basis = PrimitiveBasis(n_states = 2)
     
-    strain_list_train = RR.readDirectory(dir_train)
-    tensor_comp = strain_list_train.shape[0]
-    strain_list_test = RR.readDirectory(dir_test)
-    print(strain_list_test.shape)
-    num_ms = strain_list_test.shape[1]
-    ms_list = RMS.readDirectory(dir_test)
-    output_data = strain_list_test
+    # for strain in strain_list_train:
+        # strain = strain[:,center,:,:]
+        # pt.draw_strains(strain)
     
     models = []
     for i in range(tensor_comp):
@@ -47,14 +53,42 @@ if __name__ == "__main__":
         coeff = model.coeff
         models.append(model)
         # draw_coeff(coeff[center])
+        
+    if(dir_predict):
+        ms_list = RMS.readDirectory(dir_predict)
+        print("Read in all large MS")
+        n = ms_list.shape[1]
+        center = (n - 1) / 2
+        num_ms = ms_list.shape[0]
+        for i in range(tensor_comp):
+            model = models[i]
+            temp_model = copy.deepcopy(model)
+            temp_model.resize_coeff(ms_list[0].shape)
+            strain_pred = temp_model.predict(ms_list)
+            print("Finished Predicting for large MS")
+            for j in range(num_ms):
+                temp = strain_pred[j,center]
+                temp = np.expand_dims(temp, axis=0)
+                print(temp.shape)
+                pt.draw_strains(temp)
     
+    
+    strain_list_test = RR.readDirectory(dir_test)
+    print(strain_list_test.shape)
+    num_ms = strain_list_test.shape[1]
+    ms_list = RMS.readDirectory(dir_test)
+    n = ms_list.shape[1]
+    center = (n - 1) / 2
+    output_data = strain_list_test
     new_shape = strain_list_test.shape
     new_temp = [0]
     new_temp.extend(new_shape[1:])
     temp_data = np.ones(new_temp)
     for i in range(tensor_comp):
         model = models[i]
-        strain_pred = model.predict(ms_list)
+        temp_model = copy.deepcopy(model)
+        temp_model.resize_coeff(ms_list[0].shape)
+        strain_pred = temp_model.predict(ms_list)
         for j in range(num_ms):
             pass
             # draw_strains_compare(strain_list_test[i,j,center],strain_pred[j,center],label=labels[i])

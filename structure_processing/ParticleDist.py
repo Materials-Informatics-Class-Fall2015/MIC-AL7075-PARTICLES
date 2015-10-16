@@ -1,0 +1,74 @@
+import ReadMSFunction as RM
+import Queue
+import sys
+import os
+import numpy as np
+
+def getNeighbors(dims):
+    """ Return a list of the neighboring elements sizex27 
+        remember we use Fortran ordering to wrap/unwrap """
+    num_el = dims[0]*dims[1]*dims[2]
+    neighbors = np.zeros((num_el,26))
+    neighbors -= 1
+    for z in range(dims[2]):
+        for y in range(dims[1]):
+            for x in range(dims[0]):
+                index = 0
+                for dx in range(-1,2):
+                    for dy in range(-1,2):
+                        for dz in range(-1,2):
+                            n_x = x+dx
+                            n_y = y+dy
+                            n_z = z+dz
+                            if(n_x < dims[0] and n_x > -1 and n_y < dims[1] and n_y > -1 and n_z < dims[2] and n_z > -1 and not (dx==0 and dy==0 and dz==0)):
+                                neighbors[x+y*dims[0]+z*dims[0]*dims[1],index] = n_x+n_y*dims[0]+n_z*dims[0]*dims[1]
+                                index += 1
+    return neighbors
+    
+def getDistances(ms):
+    s = ms.shape
+    dist = np.zeros(s)
+    dist -= 1
+    q = Queue.PriorityQueue()
+    for i in range(ms.shape[0]):
+        for j in range(ms.shape[1]):
+            for k in range(ms.shape[2]):
+                if(ms[i,j,k] == 1):
+                    dist[i,j,k] = 0
+                    q.put((0, i, j, k))
+    while (not q.empty()):
+        temp = q.get()
+        d = temp[0] + 1
+        x = temp[1]
+        y = temp[2]
+        z = temp[3]
+        for dx in range(-1,2):
+            for dy in range(-1,2):
+                for dz in range(-1,2):
+                    n_x = x + dx
+                    n_y = y + dy
+                    n_z = z + dz
+                    if(n_x < s[0] and n_x > -1 and n_y < s[1] and n_y > -1 and n_z < s[2] and n_z > -1 and ms[n_x,n_y,n_z] == 0 and dist[n_x,n_y,n_z]==-1):
+                        dist[n_x,n_y,n_z] = d
+                        q.put((d, n_x, n_y, n_z))
+    return dist
+    
+def write(dir):
+    ms_list = RM.readDirectory(dir)
+    os.chdir(dir)
+    for i in range(ms_list.shape[0]):
+        dist = getDistances(ms_list[i])
+        print("Check dist")
+        center = (dist.shape[0]-1)/2
+        print(dist[center,center,center])
+        print(dist[center,center,center+3])
+        print(dist[center,center+3,center+3])
+        dist = np.reshape(dist, (dist.size,1), order='F')
+        f = open("particle_dist_%d.csv" % i, 'w')
+        for j in range(dist.size):
+            f.write("%d\n" % dist[j,0])
+        f.close()
+
+
+if(__name__ == "__main__"):
+    write(sys.argv[-1])
