@@ -1,0 +1,65 @@
+# This is an example PBS script for use on the FoRCE system with our granulous queue
+#PBS -N AutomaticSubmission
+#PBS -l nodes=1:ppn=8
+#PBS -l pmem=2gb
+#PBS -l walltime=7:00:00:00
+#PBS -q granulous
+#PBS -j oe
+#PBS -m abe
+#PBS -M dummy@gatech.edu
+#PBS -V
+
+module rm intel/12.0.0.084
+module load intel/10.1.018
+
+# Change python to right version for fatigue
+module unload python
+module load python/2.7
+
+##### Items configured by the Python script #####
+ABQ10="/usr/local/packages/abaqus/6.10-1/6.10-1/exec/abq6101.exe"
+ABQ9="/usr/local/packages/abaqus/6.9/6.9-1/exec/abq691.exe"
+ABQ7="/usr/local/packages/abaqus/6.7/6.7-1/exec/abq671.exe"
+NCPU="8"
+#NUM is replaced by actual folder in new code to modify PBS
+NUM=0
+
+# Define and Make the new scratch directory
+BATCHNAME=
+SCRATCH_DIR=~/scratch/${BATCHNAME}/Results_${PBS_JOBID}
+FINAL_DIR=~/data/archived_results/${BATCHNAME}/${NUM}
+mkdir -p ${SCRATCH_DIR}
+cd ${PBS_O_WORKDIR}
+INPT=
+
+#### Total Number of Jobs Submitted = 1 ####
+
+########## Job Submission - 1 ##########
+
+cd ${PBS_O_WORKDIR}
+
+# Define ABAQUS UMAT file, input file, and job name
+ROOT="ABAQUS"
+JOBN=Results_${INPT}${PBS_JOBID}
+
+#cp all INPT files is added to the PBS file via Python so that all input files are copied over
+
+
+# Migrate to scratch directory and execute Abaqus
+cd ${SCRATCH_DIR}
+
+#first trim filenames so that they are all standard without number
+python removeNumbers.py
+
+${ABQ9} job=${JOBN} input=${INPT} scratch=${SCRATCH_DIR} user=Al_v144.f cpus=${NCPU} interactive double
+# Extract data so that we don't have to download the whole stinking ODB file
+# ${ABQ9} python ExtractODBdata.py -- ${JOBN}.odb
+
+#append numbers to the filenames so that all our data is not lost when we run multiple experiments in one go
+python addNumbers.py
+
+#move folder to the current results folder so that we don't have to redo the folders manually on the cluster
+cd
+mkdir -p ${FINAL_DIR}
+mv ${SCRATCH_DIR}/* ${FINAL_DIR}
+rm -rf ${SCRATCH_DIR}

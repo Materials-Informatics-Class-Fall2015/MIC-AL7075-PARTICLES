@@ -1,0 +1,72 @@
+         real*8 d_gamma_dot,gamma_dot,gamma_try,g0,
+     &   g,a0,a,tau,sigma,dam_elem
+         real*8 gamma_cum_element_max,gamma_cum_element_min,
+     &   gamma_cum_init_even_step
+         real*4 Cnum,Cnum_fail
+         integer*4 Elem_pos
+         real*8 sigma_gl,disAngle,d_gr_nd
+         integer*8 Nfailed,Eval_Nuc
+         integer*8 Neighbor1,Neighbor_grains,Neighbor_num
+         integer*8 UEXTERNALDB_time
+         integer*8 START_time
+         logical Min_dist
+         logical crack_arrested		 
+         real*8 CGR_msc,Crack_plane_temp,sigma_crack_plane
+         real*8 Crack_plane_norm,dir_cos_gl
+         real*8 FIP_total
+         real*8 sig_elem
+         real*8 E_p_elem
+         real*8 E_tot_elem	
+         real*8	a_elem
+		 
+
+
+       common/KUEXT0a/ Elem_pos(num_elem,5) 
+       common/KUEXT1a/ Cnum(num_grains,max_num_layers,4) 
+       common/KUEXT1b/ Cnum_fail(num_grain_fail+1)  
+
+       common/KUEXT2a/ gamma_dot_element(num_elem,num_slip_sys)  
+       common/KUEXT2b/ gamma_cum_element(num_elem,num_slip_sys)
+       common/KUEXT2c/ gamma_cum_element_max(num_elem,num_slip_sys)
+       common/KUEXT2d/ gamma_cum_element_min(num_elem,num_slip_sys)
+       common/KUEXT2e/ gamma_cum_init_even_step(num_elem,num_slip_sys)
+       common/KUEXT2f/ sigma_gl(num_elem,num_slip_sys)
+
+       common/KUEXT2g/ dam_elem(num_elem)
+	   
+       common/KUEXT3a/ FIP_total(num_elem,13)
+
+       common/KUEXT3b/ Nfailed
+
+
+       common/KUEXT4a/ Neighbor1(num_grains*2*num_grains)
+       common/KUEXT4b/ Neighbor_grains(num_grains,num_grains)
+       common/KUEXT4c/ Neighbor_num(num_grains)
+
+       common/KUEXT5a/
+     &   Min_dist(num_grains,num_grains,max_num_layers,max_num_layers,4,4)
+       common/KUEXT6a/ crack_arrested   
+
+       common/KUEXT7a/ disAngle(num_grains,num_grains)
+       common/KUEXT7b/ disAngleMax(num_grains,num_grains)
+       common/KUEXT7c/ Grs(num_grains,4)
+
+       common/KUEXT8a/ d_gr_nd(num_grains,max_num_layers,num_slip_sys) ! This is the grain size contribution from the first neighbor in grain (k)
+
+       common/KUEXT9a/ Neighbors_el(num_elem,26)
+
+       common/KUEXT10a/ Crack_plane_temp(3,num_elem) 
+       common/KUEXT10b/ sigma_crack_plane(num_elem) 
+       common/KUEXT10c/  Crack_plane_norm(num_elem,3)
+
+       common/KUEXT11a/ dir_cos_gl(3,3,num_elem) 
+       common/KUEXT11b/ sig_elem(num_elem,3,3) 
+       common/KUEXT11c/ E_p_elem(num_elem,3,3)
+       common/KUEXT11d/ E_tot_elem(num_elem,3,3)
+
+       common/KUEXT12a/ a_elem(num_elem,num_slip_sys) ! Kinematic stress at end of step
+
+       common/KUEXT13a/ UEXTERNALDB_time ! microseconds of UEXTERNALBD time used
+       common/KUEXT13b/ START_time ! microseconds since unix epoch at simulation start
+
+ 

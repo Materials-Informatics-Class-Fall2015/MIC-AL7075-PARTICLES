@@ -16,21 +16,9 @@ import pymks.tools as pt
 import ReadResponses as RR
 import ReadMSFunction as RMS
 
-if __name__ == "__main__":
-    import sys
-    dir_test = os.getcwd()
-    if(os.path.isdir(sys.argv[-1])):
-        dir_test = sys.argv[-1]
-    dir_train = os.getcwd()
-    if(os.path.isdir(sys.argv[-2])):
-        dir_train = sys.argv[-2]
-    if(len(sys.argv) > 2 and os.path.isdir(sys.argv[-3])):
-        dir_predict = sys.argv[-1]
-        dir_test = sys.argv[-2]
-        dir_train = sys.argv[-3]
-        
-    labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
-    
+
+def trainComponents(dir_train, load=1):
+    ## train all components for the xx yy zz xy xz yz directions for this specific imposed strain
     strain_list_train = RR.readDirectory(dir_train)
     tensor_comp = strain_list_train.shape[0]
     
@@ -48,11 +36,92 @@ if __name__ == "__main__":
     models = []
     for i in range(tensor_comp):
         temp_train = strain_list_train[i]
+        temp_train /= load
         model = MKSLocalizationModel(basis = prim_basis)
         model.fit(ms_delta,temp_train)
         coeff = model.coeff
         models.append(model)
         # draw_coeff(coeff[center])
+    return models
+    
+def trainSingleLoadLevelModels(dir, start=0, load=.002):
+    ## models returned are of the order macro load, tensor component, then the spatial model
+    models = []
+    for i in range(start, start+6):
+        temp_dir = os.path.join(dir,str(i))
+        temp_models = trainComponents(temp_dir, load=load)
+        models.append(temp_models)
+    ## reorder models now to match Voigt form (from 11, 12, 13, 22, 23, 33 to 11, 22, 33, 12, 13, 23)
+    temp = models[1]
+    models[1] = models[3]
+    models[3] = temp
+    temp = models[2]
+    models[2] = models[5]
+    temp2 = models[4]
+    models[5] = temp2
+    models[4] = temp
+    return models
+    
+def predictArbitraryStrain(models, loads, ms_list):
+    ## models ordered 11, 22, 33, 12, 13, 23 and normalized by the load, next level is tensor component
+    ## loads are in same order
+    
+    n = ms_list.shape[1]
+    center = (n - 1) / 2
+    num_ms = ms_list.shape[0]
+    tensor_comp = len(models[0])
+    ## predicted values need to be in order of strain_component, MS, x, y, z
+    results = np.zeros((tensor_comp,) + ms_list.shape)
+    
+    for i in range(tensor_comp):
+        for j in range(len(loads)):
+            model = models[j][i]
+            temp_model = copy.deepcopy(model)
+            temp_model.resize_coeff(ms_list[0].shape)
+            strain_pred = temp_model.predict(ms_list)
+            results[i,:] += strain_pred*loads[j]
+            # print("Finished Predicting for large MS")
+            # for j in range(num_ms):
+                # temp = strain_pred[j,center]
+                # temp = np.expand_dims(temp, axis=0)
+                # print(temp.shape)
+                # pt.draw_strains(temp)
+    return results
+
+if __name__ == "__main__":
+    import sys
+    dir_train = sys.argv[-2]
+    dir_test = sys.argv[-1]
+    models = trainSingleLoadLevelModels(dir_train, load=-.002)
+    ms_list = RMS.readDirectory(dir_test)
+    loads = [-.00145,.004,-.00145,0,0,0]
+    strain_pred = predictArbitraryStrain(models, loads, ms_list)
+    strain_list_test = RR.readDirectory(dir_test)
+    tensor_comp = strain_list_test.shape[0]
+    num_ms = ms_list.shape[0]
+    center = (ms_list.shape[1]-1) / 2
+    labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
+    for i in range(tensor_comp):
+        for j in range(num_ms):
+            draw_strains_compare(strain_list_test[i,j,center],strain_pred[i,j,center],label=labels[i])
+    
+if False:
+    import sys
+    dir_test = os.getcwd()
+    if(os.path.isdir(sys.argv[-1])):
+        dir_test = sys.argv[-1]
+    dir_train = os.getcwd()
+    if(os.path.isdir(sys.argv[-2])):
+        dir_train = sys.argv[-2]
+    if(len(sys.argv) > 2 and os.path.isdir(sys.argv[-3])):
+        dir_predict = sys.argv[-1]
+        dir_test = sys.argv[-2]
+        dir_train = sys.argv[-3]
+        
+    labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
+    
+    models = trainModels(dir_train)
+    tensor_comp = len(models)
         
     if(dir_predict):
         ms_list = RMS.readDirectory(dir_predict)

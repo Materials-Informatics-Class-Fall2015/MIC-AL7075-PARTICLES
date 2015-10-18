@@ -17,10 +17,10 @@ def getNeighbors(dims):
                 for dx in range(-1,2):
                     for dy in range(-1,2):
                         for dz in range(-1,2):
-                            n_x = x+dx
-                            n_y = y+dy
-                            n_z = z+dz
-                            if(n_x < dims[0] and n_x > -1 and n_y < dims[1] and n_y > -1 and n_z < dims[2] and n_z > -1 and not (dx==0 and dy==0 and dz==0)):
+                            n_x = (x+dx+dims[0])%dims[0]
+                            n_y = (y+dy+dims[1])%dims[1]
+                            n_z = (z+dz+dims[2])%dims[2]
+                            if(not (dx==0 and dy==0 and dz==0)):
                                 neighbors[x+y*dims[0]+z*dims[0]*dims[1],index] = n_x+n_y*dims[0]+n_z*dims[0]*dims[1]
                                 index += 1
     return neighbors

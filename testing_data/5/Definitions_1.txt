@@ -1,0 +1,41 @@
+          INTEGER, DIMENSION(1) :: eval_life_array
+          eval_life_array=(/ 3 /)
+          H_cycle=8.0
+c*********************************************************
+c Definition of loading conditions
+c*********************************************************
+
+          ramp_time=28
+
+          hcycle_time=28
+
+          Nmulti_begins=0
+          NStage_II=1
+c*********************************************************
+c Definition of global mechanical properties
+c*********************************************************
+          Sigma_y=517
+          Cont_FS_trans=10
+c*********************************************************
+c   Definition of transgranular  fatigue life parameters
+c*********************************************************
+          Phi_irr=0.35            !Irreversibility factor  [cycles^-1]
+          DCTD_th=2.86e-07          !Delta CTD threshold  [mm]
+          d_gr_ref=0.014             !diameter of coarse grain  [mm]
+
+          Pg= 0.5              !controls evolution of FIP as band cracks [unitless]
+c*********************************************************
+c	Definition of incubation constants - Optimization
+c*********************************************************
+          C_inc_m=6
+          alpha_inc=-1.181
+		  Cont_FS_inc=10
+c*********************************************************
+c  Definition of nucleation fatigue life parameters - Optimization
+c*********************************************************
+          alpha_g=6.42e-07  ![cycles*mm] 
+c*********************************************************
+c	Transgranular Parameters - Optimization
+c*********************************************************
+          A_fs=0.0789           ! Proportionality factor  [mm]
+
