@@ -48,7 +48,10 @@ def getDistances(ms):
                     n_x = x + dx
                     n_y = y + dy
                     n_z = z + dz
-                    if(n_x < s[0] and n_x > -1 and n_y < s[1] and n_y > -1 and n_z < s[2] and n_z > -1 and ms[n_x,n_y,n_z] == 0 and dist[n_x,n_y,n_z]==-1):
+                    n_x = (x+dx+s[0])%s[0]
+                    n_y = (y+dy+s[1])%s[1]
+                    n_z = (z+dz+s[2])%s[2]
+                    if(dist[n_x,n_y,n_z] == -1 and not (dx==0 and dy==0 and dz==0)):
                         dist[n_x,n_y,n_z] = d
                         q.put((d, n_x, n_y, n_z))
     return dist
