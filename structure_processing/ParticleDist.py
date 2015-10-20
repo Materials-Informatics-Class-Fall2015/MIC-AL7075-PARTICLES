@@ -61,11 +61,11 @@ def write(dir):
     os.chdir(dir)
     for i in range(ms_list.shape[0]):
         dist = getDistances(ms_list[i])
-        print("Check dist")
-        center = (dist.shape[0]-1)/2
-        print(dist[center,center,center])
-        print(dist[center,center,center+3])
-        print(dist[center,center+3,center+3])
+        # print("Check dist")
+        # center = (dist.shape[0]-1)/2
+        # print(dist[center,center,center])
+        # print(dist[center,center,center+3])
+        # print(dist[center,center+3,center+3])
         dist = np.reshape(dist, (dist.size,1), order='F')
         f = open("particle_dist_%d.csv" % i, 'w')
         for j in range(dist.size):
