@@ -1,0 +1,276 @@
+PipelineRunner Starting. Version DREAM3DLib Version 5.1.244.0794424
+: 7%
+: : [1/13] Read DREAM3D Data File 
+Read DREAM3D Data File: : Complete
+: 14%
+: : [2/13] Initialize Synthetic Volume 
+Initialize Synthetic Volume: : Complete
+: 21%
+: : [3/13] Establish Shape Types 
+Establish Shape Types: : Complete
+: 28%
+: : [4/13] Pack Primary Phases 
+Pack Primary Phases: : Packing Features - Initializing Volume
+Pack Primary Phases: : Packing Features - Placing Features
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #1
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #2
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #3
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #4
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #5
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #6
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #7
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #8
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #9
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #10
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #11
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #12
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #13
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #14
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #15
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #16
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #17
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #18
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #19
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #20
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #21
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #22
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #23
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #24
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #25
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #26
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #27
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #28
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #29
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #30
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #31
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #32
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #33
+Pack Primary Phases: [4/13] Pack Primary Phases : Packing Features (1/2) - Generating Feature #34
+Pack Primary Phases: : Initializing Neighbor Distributions
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #1/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #2/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #3/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #4/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #5/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #6/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #7/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #8/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #9/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #10/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #11/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #12/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #13/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #14/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #15/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #16/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #17/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #18/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #19/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #20/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #21/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #22/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #23/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #24/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #25/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #26/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #27/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #28/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #29/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #30/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #31/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #32/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #33/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Placing Feature #34/35
+Pack Primary Phases: [4/13] Pack Primary Phases : Determining Neighbors
+Pack Primary Phases: : Packing Features - Feature Adjustment Complete
+Pack Primary Phases: : Packing Features - Assigning Voxels
+Pack Primary Phases: : Assigning Voxels
+Pack Primary Phases: : Packing Features - Assigning Gaps
+Pack Primary Phases: : Assigning Gaps
+Pack Primary Phases: [4/13] Pack Primary Phases : Assign Gaps|| Cycle#: 1 || Remaining Unassigned Voxel Count: 47546
+Pack Primary Phases: [4/13] Pack Primary Phases : Assign Gaps|| Cycle#: 2 || Remaining Unassigned Voxel Count: 16985
+Pack Primary Phases: [4/13] Pack Primary Phases : Assign Gaps|| Cycle#: 3 || Remaining Unassigned Voxel Count: 4279
+Pack Primary Phases: [4/13] Pack Primary Phases : Assign Gaps|| Cycle#: 4 || Remaining Unassigned Voxel Count: 696
+Pack Primary Phases: [4/13] Pack Primary Phases : Assign Gaps|| Cycle#: 5 || Remaining Unassigned Voxel Count: 37
+Pack Primary Phases: [4/13] Pack Primary Phases : Assign Gaps|| Cycle#: 6 || Remaining Unassigned Voxel Count: 0
+Pack Primary Phases: : Packing Features - Cleaning Up Volume
+Pack Primary Phases: : Packing Features Complete
+: 35%
+: : [5/13] Find Boundary Cells 
+Find Boundary Cells: : Complete
+: 42%
+: : [6/13] Insert Precipitate Phases 
+Insert Precipitate Phases: : Packing Precipitates - Generating and Placing Precipitates
+Insert Precipitate Phases: : Placing Precipitates
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #35
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #36
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #37
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #38
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #39
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #40
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #41
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #42
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #43
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #44
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #45
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #46
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #47
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #48
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #49
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #50
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #51
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #52
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #53
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #54
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #55
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #56
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #57
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #58
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #59
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #60
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #61
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #62
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #63
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #64
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #65
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #66
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #67
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #68
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #69
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #70
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #71
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #72
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #73
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #74
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #75
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #76
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #77
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #78
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #79
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #80
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #81
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #82
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #83
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #84
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #85
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Generating Feature #86
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #35
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #36
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #37
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #38
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #39
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #40
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #41
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #42
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #43
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #44
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #45
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #46
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #47
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #48
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #49
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #50
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #51
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #52
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #53
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #54
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #55
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #56
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #57
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #58
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #59
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #60
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #61
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #62
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #63
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #64
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #65
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #66
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #67
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #68
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #69
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #70
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #71
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #72
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #73
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #74
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #75
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #76
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #77
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #78
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #79
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #80
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #81
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #82
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #83
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #84
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #85
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Precipitates - Placing Precipitate #86
+Insert Precipitate Phases: : Packing Features - Initial Feature Placement Complete
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Features - Swapping/Moving/Adding/Removing Features Iteration 0/510
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Features - Swapping/Moving/Adding/Removing Features Iteration 100/510
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Features - Swapping/Moving/Adding/Removing Features Iteration 200/510
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Features - Swapping/Moving/Adding/Removing Features Iteration 300/510
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Features - Swapping/Moving/Adding/Removing Features Iteration 400/510
+Insert Precipitate Phases: [6/13] Insert Precipitate Phases : Packing Features - Swapping/Moving/Adding/Removing Features Iteration 500/510
+Insert Precipitate Phases: : Packing Precipitates - Assigning Voxels
+Insert Precipitate Phases: : Assigning Voxels
+Insert Precipitate Phases: : Packing Precipitates - Filling Gaps
+Insert Precipitate Phases: : Assigning Gaps
+Insert Precipitate Phases: : Packing Precipitates - Cleaning Up Volume
+Insert Precipitate Phases: : Cleaning Up Features
+Insert Precipitate Phases: : Assigning Gaps
+Insert Precipitate Phases: : InsertPrecipitatePhases Completed
+: 50%
+: : [7/13] Find Feature Neighbors 
+Find Feature Neighbors: : Complete
+: 57%
+: : [8/13] Match Crystallography 
+Match Crystallography: [8/13] Match Crystallography : Determining Volumes
+Match Crystallography: [8/13] Match Crystallography : Determining Boundary Areas
+Match Crystallography: : Initializing Arrays
+Match Crystallography: [8/13] Match Crystallography : Assigning Eulers to Phase 1
+Match Crystallography: [8/13] Match Crystallography : Measuring Misorientations of Phase 1
+Match Crystallography: [8/13] Match Crystallography : Matching Crystallography of Phase 1
+Match Crystallography: : Initializing Arrays
+Match Crystallography: [8/13] Match Crystallography : Assigning Eulers to Phase 2
+Match Crystallography: [8/13] Match Crystallography : Measuring Misorientations of Phase 2
+Match Crystallography: [8/13] Match Crystallography : Matching Crystallography of Phase 2
+Match Crystallography: : Complete
+: 64%
+: : [9/13] Find Feature Sizes 
+Find Feature Sizes: : FindSizes Completed
+: 71%
+: : [10/13] Generate IPF Colors 
+Generate IPF Colors: : Complete
+: 78%
+: : [11/13] Write DREAM3D Data File 
+Write DREAM3D Data File: : Complete
+: 85%
+: : [12/13] Write Vtk File (Rectilinear Grid) 
+Write Vtk File (Rectilinear Grid): [12/13] Write Vtk File (Rectilinear Grid) : Writing Feature Ids
+Write Vtk File (Rectilinear Grid): : Complete
+: 92%
+: : [13/13] Write Feature Data as CSV File 
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 1.20482% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 6.0241% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 10.8434% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 15.6627% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 20.4819% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 25.3012% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 30.1205% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 36.1446% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 40.9639% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 45.7831% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 50.6024% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 55.4217% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 60.241% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 65.0602% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 71.0843% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 75.9036% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 80.7229% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 85.5422% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 90.3614% Complete
+Write Feature Data as CSV File: [13/13] Write Feature Data as CSV File : Writing Feature Data - 95.1807% Complete
+Write Feature Data as CSV File: : FeatureDataCSVWriter Completed
+: : Pipeline Complete

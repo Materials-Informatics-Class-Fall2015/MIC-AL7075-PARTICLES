@@ -17,6 +17,22 @@ import ReadResponses as RR
 import ReadMSFunction as RMS
 
 
+def writeOutputs(output_data):
+    f_output = open("data_for_analysis.csv", "w")
+    elements = output_data[0,0]
+    elements = elements.size
+    old_shape = output_data.shape
+    output_data = np.reshape(output_data, (old_shape[0], old_shape[1], elements))
+    ## loop over elements
+    for e in range(elements):
+        ## loop over tensor values
+        for i in range(old_shape[0]):
+            ## loop over microstructures (first half are actual values, second half are predicted by MKS)
+            for j in range(old_shape[1]):
+                f_output.write("%e," % output_data[i,j,e])
+        f_output.write("\n")
+    f_output.close()
+
 def trainComponents(dir_train, load=1):
     ## train all components for the xx yy zz xy xz yz directions for this specific imposed strain
     strain_list_train = RR.readDirectory(dir_train)
@@ -91,24 +107,37 @@ def predictArbitraryStrain(models, loads, ms_list):
 if __name__ == "__main__":
     oldVersion = True
 
-
     if not oldVersion:
         import sys
         dir_train = sys.argv[-2]
         dir_test = sys.argv[-1]
         models = trainSingleLoadLevelModels(dir_train, load=-.002)
-        ms_list = RMS.readDirectory(dir_test)
-        loads = [-.00145,.004,-.00145,0,0,0]
-        strain_pred = predictArbitraryStrain(models, loads, ms_list)
-        strain_list_test = RR.readDirectory(dir_test)
-        tensor_comp = strain_list_test.shape[0]
-        num_ms = ms_list.shape[0]
-        center = (ms_list.shape[1]-1) / 2
-        labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
-        for i in range(tensor_comp):
-            for j in range(num_ms):
-                draw_strains_compare(strain_list_test[i,j,center],strain_pred[i,j,center],label=labels[i])
         
+        # loads = [0,0,0,.002,0,0]
+        loads = [-.00073*1.5,.002*1.5,-.00073*1.5,0,0,0]
+        try:
+            ms_list = RMS.readDirectory(dir_test)
+            strain_list_test = RR.readDirectory(dir_test)
+        except:
+            strain_list_test = None
+        if(strain_list_test is not None):
+            strain_pred = predictArbitraryStrain(models, loads, ms_list)
+            tensor_comp = strain_list_test.shape[0]
+            num_ms = ms_list.shape[0]
+            center = (ms_list.shape[1]-1) / 2
+            labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
+            # for i in range(tensor_comp):
+                # for j in range(num_ms):
+                    # draw_strains_compare(strain_list_test[i,j,center],strain_pred[i,j,center],label=labels[i])
+            output_data = np.concatenate((strain_list_test, strain_pred), axis=1)
+            os.chdir(dir_test)
+            writeOutputs(output_data)
+        else:
+            ms_list = RMS.readDirectory(dir_test)
+            strain_pred = predictArbitraryStrain(models, loads, ms_list)
+            os.chdir(dir_test)
+            writeOutputs(strain_pred)
+            
     if oldVersion:
         import sys
         dir_test = os.getcwd()
@@ -190,18 +219,6 @@ if __name__ == "__main__":
                 # draw_differences([strain_list_test[i,j,center]-strain_pred[j,center]],['FE - MKS for Microstructure %d' % (j+1)])
             temp_data = np.append(temp_data, np.expand_dims(strain_pred,axis=0), axis=0)
         output_data = np.concatenate((output_data, temp_data), axis=1)
-                
-        f_output = open("data_for_analysis.csv", "w")
-        elements = output_data[0,0]
-        elements = elements.size
-        old_shape = output_data.shape
-        output_data = np.reshape(output_data, (old_shape[0], old_shape[1], elements))
-        ## loop over elements
-        for e in range(elements):
-            ## loop over tensor values
-            for i in range(old_shape[0]):
-                ## loop over microstructures (first half are actual values, second half are predicted by MKS)
-                for j in range(old_shape[1]):
-                    f_output.write("%e," % output_data[i,j,e])
-            f_output.write("\n")
-        f_output.close()
+        os.chdir(dir_test)
+        writeOutputs(output_data)   
+        
