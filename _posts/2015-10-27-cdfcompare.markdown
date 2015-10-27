@@ -23,4 +23,5 @@ The idea behind this binning was to investigate whether or not a close proximity
  6. 0.5504
  7. 0.377
  8. 0.7869
+
 Where these p-values are ordered  with the corresponding Manhattan distances. This unexpected phenomenon was not unique to this specific microstructure, loading condition or tensor orientation. As a result, we decided to move forward with a specific analysis on the magnitude of the difference between the Finite Element Method and PyMKS.
