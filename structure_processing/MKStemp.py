@@ -15,6 +15,7 @@ from pymks.tools import draw_differences
 import pymks.tools as pt
 import ReadResponses as RR
 import ReadMSFunction as RMS
+import cPickle
 
 
 def writeOutputs(output_data):
@@ -22,7 +23,7 @@ def writeOutputs(output_data):
     elements = output_data[0,0]
     elements = elements.size
     old_shape = output_data.shape
-    output_data = np.reshape(output_data, (old_shape[0], old_shape[1], elements))
+    output_data = np.reshape(output_data, (old_shape[0], old_shape[1], elements), order='F')
     ## loop over elements
     for e in range(elements):
         ## loop over tensor values
@@ -62,20 +63,14 @@ def trainComponents(dir_train, load=1):
     
 def trainSingleLoadLevelModels(dir, start=0, load=.002):
     ## models returned are of the order macro load, tensor component, then the spatial model
-    models = []
+    models = [0]*6
+    index = [0, 3, 4, 1, 5, 2]
     for i in range(start, start+6):
         temp_dir = os.path.join(dir,str(i))
         temp_models = trainComponents(temp_dir, load=load)
-        models.append(temp_models)
+        # component = temp_models[index[i]]
+        models[index[i]] = temp_models
     ## reorder models now to match Voigt form (from 11, 12, 13, 22, 23, 33 to 11, 22, 33, 12, 13, 23)
-    temp = models[1]
-    models[1] = models[3]
-    models[3] = temp
-    temp = models[2]
-    models[2] = models[5]
-    temp2 = models[4]
-    models[5] = temp2
-    models[4] = temp
     return models
     
 def predictArbitraryStrain(models, loads, ms_list):
@@ -85,36 +80,57 @@ def predictArbitraryStrain(models, loads, ms_list):
     n = ms_list.shape[1]
     center = (n - 1) / 2
     num_ms = ms_list.shape[0]
-    tensor_comp = len(models[0])
+    tensor_comp = len(models)
     ## predicted values need to be in order of strain_component, MS, x, y, z
     results = np.zeros((tensor_comp,) + ms_list.shape)
     
     for i in range(tensor_comp):
-        for j in range(len(loads)):
-            model = models[j][i]
+        temp = models[i]
+        if(type(temp)==type([])):
+            for j in range(len(temp)):
+                model = temp[j]
+                temp_model = copy.deepcopy(model)
+                temp_model.resize_coeff(ms_list[0].shape)
+                strain_pred = temp_model.predict(ms_list)
+                results[j,:] += strain_pred*loads[i]
+        else:
+            model = models[i]
             temp_model = copy.deepcopy(model)
             temp_model.resize_coeff(ms_list[0].shape)
             strain_pred = temp_model.predict(ms_list)
-            results[i,:] += strain_pred*loads[j]
-            # print("Finished Predicting for large MS")
-            # for j in range(num_ms):
-                # temp = strain_pred[j,center]
-                # temp = np.expand_dims(temp, axis=0)
-                # print(temp.shape)
-                # pt.draw_strains(temp)
+            results[i,:] = strain_pred*loads[i]
+                # print("Finished Predicting for large MS")
+                # for j in range(num_ms):
+                    # temp = strain_pred[j,center]
+                    # temp = np.expand_dims(temp, axis=0)
+                    # print(temp.shape)
+                    # pt.draw_strains(temp)
     return results
 
 if __name__ == "__main__":
-    oldVersion = True
 
+    oldVersion = False
     if not oldVersion:
         import sys
         dir_train = sys.argv[-2]
         dir_test = sys.argv[-1]
-        models = trainSingleLoadLevelModels(dir_train, load=-.002)
+        models_f = "models.p"
+        model_f = os.path.join(os.getcwd(), models_f)
+        if(os.path.exists(model_f)):
+            model_f = open(model_f, 'r')
+            models = cPickle.load(model_f)
+            model_f.close()
+        else:
+            models = trainSingleLoadLevelModels(dir_train, load=-.002)
+            model_f = open(model_f, 'w')
+            cPickle.dump(models, model_f)
+            model_f.close()
         
         # loads = [0,0,0,.002,0,0]
-        loads = [-.00073*1.5,.002*1.5,-.00073*1.5,0,0,0]
+        # loads = [-.00073*1.5,.002*1.5,-.00073*1.5,0,0,0]
+        # loads = [-.000719,.00199,-.000718,4.45e-7,4.7e-8,-1.3e-7]
+        # loads = [0,.00199,0,0,0,0]
+        loads = [.002*-.3595,.002,.002*-.3595,0,0,0]
         try:
             ms_list = RMS.readDirectory(dir_test)
             strain_list_test = RR.readDirectory(dir_test)

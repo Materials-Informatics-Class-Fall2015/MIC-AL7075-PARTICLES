@@ -35,7 +35,7 @@ def getDistances(ms):
             for k in range(ms.shape[2]):
                 if(ms[i,j,k] == 1):
                     dist[i,j,k] = 0
-                    q.put((0, i, j, k))
+                    q.put((0, i, j, k, i, j, k))
     while (not q.empty()):
         temp = q.get()
         d = temp[0] + 1
@@ -52,8 +52,13 @@ def getDistances(ms):
                     n_y = (y+dy+s[1])%s[1]
                     n_z = (z+dz+s[2])%s[2]
                     if(dist[n_x,n_y,n_z] == -1 and not (dx==0 and dy==0 and dz==0)):
-                        dist[n_x,n_y,n_z] = d
-                        q.put((d, n_x, n_y, n_z))
+                        diff_x = min(abs(n_x-temp[4]), s[0]-abs(n_x-temp[4]))
+                        diff_y = min(abs(n_y-temp[5]), s[1]-abs(n_y-temp[5]))
+                        diff_z = min(abs(n_z-temp[6]), s[2]-abs(n_z-temp[6]))
+                        # print("element %d %d %d" % (n_x, n_y, n_z))
+                        # print("distances %d %d %d" % (diff_x, diff_y, diff_z))
+                        dist[n_x,n_y,n_z] = (diff_x**2 + diff_y**2 + diff_z**2)**(.5)
+                        q.put((d, n_x, n_y, n_z, temp[4], temp[5], temp[6]))
     return dist
     
 def write(dir):
@@ -69,7 +74,7 @@ def write(dir):
         dist = np.reshape(dist, (dist.size,1), order='F')
         f = open("particle_dist_%d.csv" % i, 'w')
         for j in range(dist.size):
-            f.write("%d\n" % dist[j,0])
+            f.write("%f\n" % dist[j,0])
         f.close()
 
 

@@ -150,6 +150,8 @@ def MSC(ith_grain_to_crack):
         prop_cycles -= step_cycles
         ## propagate outward for each of the points
         oldPerim = set(perimeter_elements.keys())
+        neighbors = findDiffElNeighbor()
+        props = weightProp(neighbors)
         for p in points:
             if(p.element!=-1):
                 temp_perim = perimeter_elements[p.element]
@@ -163,7 +165,8 @@ def MSC(ith_grain_to_crack):
                 proj_dir = p.direction+crack.plane*a
                 proj_dir /= np.linalg.norm(proj_dir)
                 ## NOTE: assume that the propgation rate is constant within the current element (is this valid for large element and small grain?)
-                p.point += proj_dir*step_cycles*temp_perim.prop
+                prop = props[p.id]
+                p.point += proj_dir*step_cycles*prop
                 temp_dist = np.linalg.norm(p.point-crack.centroid)
                 if(temp_dist>crack.length):
                     crack.length = temp_dist
@@ -194,7 +197,49 @@ def MSC(ith_grain_to_crack):
     
     writeElementSet(ith_grain_to_crack, crack_set_counter)
     crack_set_counter += 1
+    
+def findDiffElNeighbor():
+    global points
+    neighbors = []
+    tp = len(points)
+    for i in range(len(points)):
+        forward = 1
+        backward = -1
+        temp_el = points[i].element
+        while(points[(i+forward)%tp].element == temp_el or points[(i+forward)%tp].element == -1):
+            forward += 1
+        while(points[(i+backward+tp)%tp].element == temp_el or points[(i+backward+tp)%tp].element == -1):
+            backward -= 1
+        neighbors.append(((i+forward)%tp,(i+backward+tp)%tp))
+    return neighbors
 
+def weightProp(neighbors):
+    global points, perimeter_elements
+    ## process dist is a fundamental property for averaging the propagation rates
+    process_dist = 0.0025
+    props = []
+    for i in range(len(points)):
+        cur_point = points[i]
+        temp = neighbors[i]
+        f_p = points[temp[0]]
+        b_p = points[temp[1]]
+        f_w = (.25)**(np.linalg.norm(f_p.point-cur_point.point)/process_dist)
+        b_w = (.25)**(np.linalg.norm(b_p.point-cur_point.point)/process_dist)
+        weight = 0
+        sum = 0
+        if(b_p.element != -1):
+            weight += b_w
+            sum += b_w*perimeter_elements[b_p.element].prop
+        if(f_p.element != -1):
+            weight += f_w
+            sum += f_w*perimeter_elements[f_p.element].prop
+        if(cur_point.element != -1):
+            weight += 1
+            sum += perimeter_elements[cur_point.element].prop
+        prop = sum/weight
+        props.append(prop)
+    return props
+        
 def null(a, rtol=1e-5):
     u, s, v = np.linalg.svd(a)
     rank = (s > rtol*s[0]).sum()

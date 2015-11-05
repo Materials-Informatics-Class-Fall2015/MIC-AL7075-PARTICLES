@@ -1,0 +1,17 @@
+/training_data/training_main/*
+/training_data/training_rotate/*
+*.pbs
+*.txt
+*.odb
+*.msg
+*.dat
+*.f
+*.csv
+*.pyc
+!trial_elem*.txt
+!trial_P*.txt
+!*.mat
+!*data*.csv
+!*.xlsx
+!*.xlx
+!E_el_*.csv

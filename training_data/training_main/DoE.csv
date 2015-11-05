@@ -1,7 +1,0 @@
-numRuns,sve_x,sve_y,sve_z,sve_res,sve_geometry,mat,sve_banded,sve_band_thickness,load_0,load_0_r,load_0_a,load_0_repeats,load_0_overload,sve_single_crystal,MS_repeat,sve_repeat,sve_dream3d
-2,0.021,0.021,0.021,0.001,smooth,Al7075,TRUE,1,"uniaxial,y",-1,0.004,1,0,FALSE,FALSE,FALSE,TRUE
-2,0.021,0.021,0.021,0.001,smooth,Al7075,TRUE,1,"uniaxial,y",-1,0.003,1,0,FALSE,TRUE,TRUE,FALSE
-2,0.021,0.021,0.021,0.001,smooth,Al7075,TRUE,1,"uniaxial,y",-1,0.002,1,0,FALSE,TRUE,TRUE,FALSE
-2,0.021,0.021,0.021,0.001,smooth,Al7075,TRUE,1,"shear,yx",-1,0.006,1,0,FALSE,TRUE,TRUE,FALSE
-2,0.021,0.021,0.021,0.001,smooth,Al7075,TRUE,1,"shear,yx",-1,0.005,1,0,FALSE,TRUE,TRUE,FALSE
-2,0.021,0.021,0.021,0.001,smooth,Al7075,TRUE,1,"shear,yx",-1,0.004,1,0,FALSE,TRUE,TRUE,FALSE

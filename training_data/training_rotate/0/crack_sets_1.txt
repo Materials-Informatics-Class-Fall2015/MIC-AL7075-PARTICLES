@@ -1,4 +1,0 @@
-*Elset, elset=Elements_in_crack0_0
-4631, 
-*Elset, elset=Perimeter_Elements0_0
-5071, 5072, 5073, 4630, 4631, 4632, 4189, 4190, 4191, 

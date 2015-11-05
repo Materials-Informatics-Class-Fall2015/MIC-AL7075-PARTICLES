@@ -1,5 +1,0 @@
-21
-#time=1
-grain_id phi1 Phi phi2
-0 0 0 0
-1 0 0 0

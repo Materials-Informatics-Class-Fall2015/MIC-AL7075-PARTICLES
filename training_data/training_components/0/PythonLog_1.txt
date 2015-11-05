@@ -1,7 +1,0 @@
-INFO:root:2.7.9
-INFO:root:----------------Run Main Program----------------
-INFO:root:----------------------------------EVAL NUC----------------------------------
-INFO:root:----------------------------------LIFE SUMMARY----------------------------------
-INFO:root:crack_len: 0
-INFO:root:crack_cycles: 0
-INFO:root:----------------------------------Main.py Complete----------------------------------
