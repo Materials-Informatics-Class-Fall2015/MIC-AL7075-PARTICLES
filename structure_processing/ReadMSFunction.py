@@ -76,7 +76,7 @@ def scaleMS(ms, scale):
 def readImages(directory, filenames, scales):
     """ Return a list of microstructures scaled and trimmed to the minimum value """
     temp_list = []
-    threshold = 120
+    threshold = 150
     min_x = 10**10
     min_y = 10**10
     for f, s in zip(filenames,scales):
@@ -94,14 +94,14 @@ def readImages(directory, filenames, scales):
         if(ms.shape[1] < min_y):
             min_y = ms.shape[1]
     ms_list = None
-    p_x = min_x/2
-    m_x = (min_x+1)/2
-    p_y = min_y/2
-    m_y = (min_y+1)/2
+    p_x = (min_x+1)/2
+    m_x = (min_x)/2
+    p_y = (min_y+1)/2
+    m_y = (min_y)/2
     for ms in temp_list:
-        center_x = ms.shape[0]/2
-        center_y = ms.shape[1]/2
-        ms = ms[center_x-m_x:center_x+p_x, center_y-m_y:center_y+p_y]
+        center_x = (ms.shape[0]-1)/2
+        center_y = (ms.shape[1]-1)/2
+        ms = ms[max(center_x-m_x,0):center_x+p_x, max(center_y-m_y,0):center_y+p_y]
         print(ms.shape)
         print(p_x)
         print(m_x)
@@ -120,24 +120,25 @@ def readImages(directory, filenames, scales):
             ms_list = np.concatenate((ms_list, ms), axis=0)
     return ms_list
     
-def plotCorrelations(ms_list):
-    prim_basis = PrimitiveBasis(n_states=2, domain=[0, 1])
-    for i, X_ in enumerate(ms_list):
-        X_ = np.expand_dims(X_, axis=0)
-        X_ = prim_basis.discretize(X_)
-        print(X_.shape)
-        X_corr = correlate(X_)
-        print X_corr[0].shape
+def plotCorrelations(correlations):
+    print(correlations.shape)
+    for i, X_corr in enumerate(correlations):
         # average over z layers
-        avg_corr = np.zeros(X_corr[0].shape[:-2] + (X_corr[0].shape[-1],))
-        num_slices = X_corr[0].shape[-2]
-        for slice in range(num_slices):
-            avg_corr += X_corr[0][:,:,slice]/num_slices
-        for corr_num in range(X_corr[0].shape[-1]):
+        if(len(X_corr.shape)>=4):
+            ## shape is x,y,z,correlation
+            center = (X_corr.shape[2]-1)/2
+            avg_corr = X_corr[:,:,center,:]
+        else:
+            avg_corr = X_corr
+        # draw_correlations(avg_corr)
+        for corr_num in range(X_corr.shape[-1]):
             to_plot = avg_corr[:,:,corr_num]
-            to_plot = np.expand_dims(to_plot, axis=2)
-            print(to_plot.shape)
-            draw_correlations(to_plot)
+            # print(to_plot.dtype)
+            plt.matshow(to_plot)
+            plt.show()
+            # to_plot = np.expand_dims(to_plot, axis=2)
+            # print(to_plot.shape)
+            # draw_correlations(to_plot)
     
 
 def plotMS(ms_list):
@@ -187,7 +188,7 @@ if __name__ == "__main__":
     dir = os.getcwd()
     if(os.path.isdir(sys.argv[-1])):
         dir = sys.argv[-1]
-    readImages(dir, ["L-S.png", "L-T.png"], [1.5, 1.5])
+    readImages(dir, ["L-S.png", "L-T.png", "L-T-James-refined-5.png"], [1.5, 1.5, 1])
     # ms_list = readDirectory(dir)
     # ms_list = readMatlab(sys.argv[-1])
     # print(ms_list.shape)
