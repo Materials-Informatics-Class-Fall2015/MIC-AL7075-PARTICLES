@@ -94,23 +94,12 @@ def readImages(directory, filenames, scales):
         if(ms.shape[1] < min_y):
             min_y = ms.shape[1]
     ms_list = None
-    p_x = (min_x+1)/2
-    m_x = (min_x)/2
-    p_y = (min_y+1)/2
-    m_y = (min_y)/2
     for ms in temp_list:
         center_x = (ms.shape[0]-1)/2
         center_y = (ms.shape[1]-1)/2
-        ms = ms[max(center_x-m_x,0):center_x+p_x, max(center_y-m_y,0):center_y+p_y]
-        print(ms.shape)
-        print(p_x)
-        print(m_x)
-        print(p_y)
-        print(m_y)
-        print(center_x)
-        print(center_y)
-        print(np.min(ms))
-        print(np.max(ms))
+        m_x = center_x - (min_x-1)/2
+        m_y = center_y - (min_y-1)/2
+        ms = ms[m_x:m_x+min_x, m_y:m_y+min_y]
         plt.matshow(ms)
         plt.show()
         ms = np.expand_dims(ms, axis=0)

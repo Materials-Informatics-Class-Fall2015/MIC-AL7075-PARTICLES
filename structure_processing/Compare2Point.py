@@ -34,7 +34,8 @@ if __name__ == "__main__":
     print dir
     print dir2
     ## get our raw data (change the image names and scaling)
-    images = RMS.readImages(dir, ["L-T-James-Large-refined.png","L-T-James-refined.png","L-T-James-refined-3.png","L-T-James-refined-4.png","L-T-James-refined-5.png","L-T-James-refined-2.png"], [1/(252/33.75),(164/33.75)/(252/33.75),(248/33.75)/(252/33.75),(248/33.75)/(252/33.75),(248/33.75)/(252/33.75),1])
+    o_sc = 5
+    images = RMS.readImages(dir, ["L-T-James-Large-refined.png","L-T-James-refined.png","L-T-James-refined-3.png","L-T-James-refined-4-t.png","L-T-James-refined-5.png","L-T-James-refined-2.png"], [o_sc/1,o_sc/(164/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(252/33.75)])
     large_ms = RMS.readDirectory(dir2)
     ## trim large MS to be odd in all spatial directions
     temp = large_ms.shape
