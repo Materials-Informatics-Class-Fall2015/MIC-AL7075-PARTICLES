@@ -55,7 +55,7 @@ if __name__ == "__main__":
     ## do 2 point stats on all the image MS
     images = prim_basis.discretize(images)
     corr2d = correlate(images)
-    RMS.plotCorrelations(corr2d)
+    # RMS.plotCorrelations(corr2d)
     center_x = corr2d.shape[1]/2
     center_y = corr2d.shape[2]/2
     p_x = new_size[0]/2+1
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     m_y = new_size[1]/2
     corr2d = corr2d[:,center_x-m_x:center_x+p_x,center_y-m_y:center_y+p_y]
     corr2d = corr2d.astype(np.float64)
-    RMS.plotCorrelations(corr3d)
+    # RMS.plotCorrelations(corr3d)
     
     ## quantify the goodness of fit for the large MS in each plane 
     center = (new_size[-1]-1)/2
