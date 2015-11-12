@@ -9,6 +9,7 @@ import scipy.io as sio
 from scipy import misc
 from scipy import interpolate
 import ReadMSFunction as RMS
+import cPickle
 
 
 def getErrors(corr1, corr2):
@@ -70,6 +71,8 @@ if __name__ == "__main__":
     center = (new_size[-1]-1)/2
     ms_slice = corr3d[...,center,:]
     validation_errors = []
+    v_err_f = open("Recon_Errors.csv", "w")
+    ms_err_f = open("MS_Errors.csv", "w")
     ## write out raw errors to files
     for i in range(len(corr2d)):
         temp = getErrors(corr2d[i], ms_slice[0])
@@ -80,6 +83,7 @@ if __name__ == "__main__":
         for k in range(temp[2].size):
             f.write("%e,%e\n" % (temp_1[k],temp_2[k]))
         f.close()
+        v_err_f.write("%e,%e\n" % (temp[0], temp[1]))
     microstructure_errors = []
     
     for i in range(len(corr2d)):
@@ -93,15 +97,25 @@ if __name__ == "__main__":
                 for k in range(temp[2].size):
                     f.write("%e,%e\n" % (temp_1[k],temp_2[k]))
                 f.close()
+                ms_err_f.write("%d,%d,%e,%e\n" % (i,j,temp[0],temp[1]))
     ## plot the mean errors
     names = ["MSE", "MAE"]
+    labels = ["", "Experimental", "Validation", ""]
     print(microstructure_errors)
     print(validation_errors)
+    temp = open("errors.p", "w")
+    cPickle.dump([microstructure_errors, validation_errors], temp)
+    temp.close()
     for i in range(len(names)):
         for e in microstructure_errors:
             plt.plot(1,e[i],'k*')
         for e in validation_errors:
             plt.plot(2,e[i],'k*')
+        plt.xlim(0,3)
+        plt.xticks(range(len(labels)), labels)
+        plt.ylabel(names[i])
         plt.savefig(names[i])
         plt.clf()
+    v_err_f.close()
+    ms_err_f.close()
     
