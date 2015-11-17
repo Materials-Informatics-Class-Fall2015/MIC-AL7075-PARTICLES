@@ -19,6 +19,8 @@ def readDirectory(directory):
             filenames.append(f)
         elif(f.find(".mat")==(len(f)-4)):
             mat_files.append(f)
+    print(filenames)
+    print(mat_files)
     ms_list = [0]*len(filenames)
     for f in filenames:
         num = int(f[f.rfind("_")+1:f.rfind(".txt")])

@@ -35,7 +35,7 @@ def writeOutputs(output_data):
     f_output.close()
 
 def trainComponents(dir_train, load=1):
-    ## train all components for the xx yy zz xy xz yz directions for this specific imposed strain
+    ## train all components for the xx yy zz yz xz xy directions for this specific imposed strain
     strain_list_train = RR.readDirectory(dir_train)
     tensor_comp = strain_list_train.shape[0]
     
@@ -64,17 +64,17 @@ def trainComponents(dir_train, load=1):
 def trainSingleLoadLevelModels(dir, start=0, load=.002):
     ## models returned are of the order macro load, tensor component, then the spatial model
     models = [0]*6
-    index = [0, 3, 4, 1, 5, 2]
+    index = [0, 5, 4, 1, 3, 2]
     for i in range(start, start+6):
         temp_dir = os.path.join(dir,str(i))
         temp_models = trainComponents(temp_dir, load=load)
         # component = temp_models[index[i]]
         models[index[i]] = temp_models
-    ## reorder models now to match Voigt form (from 11, 12, 13, 22, 23, 33 to 11, 22, 33, 12, 13, 23)
+    ## reorder models now to match Voigt form (from 11, 12, 13, 22, 23, 33 to 11, 22, 33, 23, 13, 12)
     return models
     
 def predictArbitraryStrain(models, loads, ms_list):
-    ## models ordered 11, 22, 33, 12, 13, 23 and normalized by the load, next level is tensor component
+    ## models ordered 11, 22, 33, 23, 13, 12 and normalized by the load, next level is tensor component
     ## loads are in same order
     
     n = ms_list.shape[1]
@@ -110,10 +110,15 @@ def predictArbitraryStrain(models, loads, ms_list):
 if __name__ == "__main__":
 
     oldVersion = False
+    TrainPredict(oldVersion, sys.argv)
+    
+    
+def TrainPredict(oldVersion, args):
+    old_dir = os.getcwd()
     if not oldVersion:
         import sys
-        dir_train = sys.argv[-2]
-        dir_test = sys.argv[-1]
+        dir_train = args[-2]
+        dir_test = args[-1]
         models_f = "models.p"
         model_f = os.path.join(os.getcwd(), models_f)
         if(os.path.exists(model_f)):
@@ -130,7 +135,7 @@ if __name__ == "__main__":
         # loads = [-.00073*1.5,.002*1.5,-.00073*1.5,0,0,0]
         # loads = [-.000719,.00199,-.000718,4.45e-7,4.7e-8,-1.3e-7]
         # loads = [0,.00199,0,0,0,0]
-        loads = [.002*-.3595,.002,.002*-.3595,0,0,0]
+        loads = [.002*-.3,.002,.002*-.3,0,0,0]
         try:
             ms_list = RMS.readDirectory(dir_test)
             strain_list_test = RR.readDirectory(dir_test)
@@ -141,33 +146,38 @@ if __name__ == "__main__":
             tensor_comp = strain_list_test.shape[0]
             num_ms = ms_list.shape[0]
             center = (ms_list.shape[1]-1) / 2
-            labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
+            labels = ['xx', 'yy', 'zz', 'yz', 'xz', 'xy']
             # for i in range(tensor_comp):
                 # for j in range(num_ms):
                     # draw_strains_compare(strain_list_test[i,j,center],strain_pred[i,j,center],label=labels[i])
             output_data = np.concatenate((strain_list_test, strain_pred), axis=1)
             os.chdir(dir_test)
-            writeOutputs(output_data)
+            #writeOutputs(output_data)
+            os.chdir(old_dir)
+            return output_data
+            
         else:
             ms_list = RMS.readDirectory(dir_test)
             strain_pred = predictArbitraryStrain(models, loads, ms_list)
             os.chdir(dir_test)
-            writeOutputs(strain_pred)
+            #writeOutputs(strain_pred)
+            os.chdir(old_dir)
+            return strain_pred
             
     if oldVersion:
         import sys
         dir_test = os.getcwd()
         dir_predict = None
         dir_train = None
-        if(os.path.isdir(sys.argv[-1])):
-            dir_test = sys.argv[-1]
+        if(os.path.isdir(args[-1])):
+            dir_test = args[-1]
         dir_train = os.getcwd()
-        if(os.path.isdir(sys.argv[-2])):
-            dir_train = sys.argv[-2]
-        if(len(sys.argv) > 2 and os.path.isdir(sys.argv[-3])):
-            dir_predict = sys.argv[-1]
-            dir_test = sys.argv[-2]
-            dir_train = sys.argv[-3]
+        if(os.path.isdir(args[-2])):
+            dir_train = args[-2]
+        if(len(args) > 2 and os.path.isdir(args[-3])):
+            dir_predict = args[-1]
+            dir_test = args[-2]
+            dir_train = args[-3]
             
         labels = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
         
