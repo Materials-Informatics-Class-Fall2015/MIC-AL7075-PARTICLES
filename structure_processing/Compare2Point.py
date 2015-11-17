@@ -11,13 +11,16 @@ from scipy import interpolate
 import ReadMSFunction as RMS
 import cPickle
 
-
 def getErrors(corr1, corr2):
     print(corr1.shape)
     print(corr2.shape)
-    diff = corr1 - corr2
+    ## normalize by the volume fraction
+    center_x = (corr1.shape[0]-1)/2
+    center_y = (corr1.shape[1]-1)/2
     ## only need one unique correlation
-    diff = diff[...,0]
+    temp1 = corr1[...,0]/corr1[center_x,center_y,0]
+    temp2 = corr2[...,0]/corr2[center_x,center_y,0]
+    diff = temp1 - temp2
     raw_se = (diff)**2
     mse = np.average(raw_se)
     raw_ae = np.abs(diff)
