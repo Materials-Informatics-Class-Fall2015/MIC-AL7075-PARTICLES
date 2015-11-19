@@ -26,6 +26,24 @@ def getErrors(corr1, corr2):
     raw_ae = np.abs(diff)
     mae = np.average(raw_ae)
     return (mse,mae,raw_se,raw_ae)
+    
+def makeMSodd(ms):
+    new_size = []
+    temp = ms.shape
+    threshold = 799
+    for i in range(1,len(temp)):
+        if(temp[i]%2==0 and temp[i] < threshold):
+            new_size.append(temp[i]-1)
+        elif(temp[i] < threshold):
+            new_size.append(temp[i])
+        else:
+            new_size.append(threshold)
+    # new_size = [101,101,101]
+    if(len(new_size) > 2):
+        ms = ms[:,:new_size[0],:new_size[1],:new_size[2]]
+    else:
+        ms = ms[:,:new_size[0],:new_size[1]]
+    return ms
 
 if __name__ == "__main__":
     import sys
@@ -40,32 +58,32 @@ if __name__ == "__main__":
     ## get our raw data (change the image names and scaling)
     o_sc = 5
     images = RMS.readImages(dir, ["L-T-James-Large-refined.png","L-T-James-refined.png","L-T-James-refined-3.png","L-T-James-refined-4-t.png","L-T-James-refined-5.png","L-T-James-refined-2.png"], [o_sc/1,o_sc/(164/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(252/33.75)])
+    #images = images[::-1]
+    image_corr = []
+    prim_basis = PrimitiveBasis(2, [0, 1])
+    for image in images:
+        image = makeMSodd(image)
+        image = prim_basis.discretize(image)
+        temp = correlate(image)
+        print(temp.shape)
+        image_corr.append(temp)
+    corr2d = RMS.trimMS(image_corr)
     large_ms = RMS.readDirectory(dir2)
     ## trim large MS to be odd in all spatial directions
-    temp = large_ms.shape
-    new_size = []
-    for i in range(1,len(temp)):
-        if(temp[i]%2==0):
-            new_size.append(temp[i]-1)
-        else:
-            new_size.append(temp[i])
-    # new_size = [101,101,101]
-    large_ms = large_ms[:,:new_size[0],:new_size[1],:new_size[2]]
-    prim_basis = PrimitiveBasis(2, [0, 1])
+    large_ms = makeMSodd(large_ms)
     large_ms = prim_basis.discretize(large_ms)
     ## do 2 point stats on large MS
     corr3d = correlate(large_ms)
     corr3d = corr3d.astype(np.float64)
     ## do 2 point stats on all the image MS
-    images = prim_basis.discretize(images)
-    corr2d = correlate(images)
-    # RMS.plotCorrelations(corr2d)
+    #RMS.plotCorrelations(corr2d)
     center_x = corr2d.shape[1]/2
     center_y = corr2d.shape[2]/2
-    p_x = new_size[0]/2+1
-    m_x = new_size[0]/2
-    p_y = new_size[1]/2+1
-    m_y = new_size[1]/2
+    new_size = corr3d.shape
+    p_x = new_size[1]/2+1
+    m_x = new_size[1]/2
+    p_y = new_size[2]/2+1
+    m_y = new_size[2]/2
     corr2d = corr2d[:,center_x-m_x:center_x+p_x,center_y-m_y:center_y+p_y]
     corr2d = corr2d.astype(np.float64)
     # RMS.plotCorrelations(corr3d)

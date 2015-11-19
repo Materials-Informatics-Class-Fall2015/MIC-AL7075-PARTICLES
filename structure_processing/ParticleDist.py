@@ -3,6 +3,7 @@ import Queue
 import sys
 import os
 import numpy as np
+import math
 
 def getNeighbors(dims):
     """ Return a list of the neighboring elements sizex27 
@@ -57,7 +58,7 @@ def getDistances(ms):
                         diff_z = min(abs(n_z-temp[6]), s[2]-abs(n_z-temp[6]))
                         # print("element %d %d %d" % (n_x, n_y, n_z))
                         # print("distances %d %d %d" % (diff_x, diff_y, diff_z))
-                        dist[n_x,n_y,n_z] = (diff_x**2 + diff_y**2 + diff_z**2)**(.5)
+                        dist[n_x,n_y,n_z] = math.ceil((diff_x**2 + diff_y**2 + diff_z**2)**(.5))
                         q.put((d, n_x, n_y, n_z, temp[4], temp[5], temp[6]))
     return dist
     

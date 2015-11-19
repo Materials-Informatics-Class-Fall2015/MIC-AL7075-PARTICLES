@@ -79,8 +79,6 @@ def readImages(directory, filenames, scales):
     """ Return a list of microstructures scaled and trimmed to the minimum value """
     temp_list = []
     threshold = 150
-    min_x = 10**10
-    min_y = 10**10
     for f, s in zip(filenames,scales):
         f = os.path.join(directory, f)
         ms = misc.imread(f)
@@ -90,24 +88,34 @@ def readImages(directory, filenames, scales):
         filter = ms >= threshold
         ms[filter] = 0
         ms = scaleMS(ms, s)
+        #plt.matshow(ms)
+        #plt.show()
+        ms = np.expand_dims(ms, axis=0)
+        print(ms.shape)
         temp_list.append(ms)
-        if(ms.shape[0] < min_x):
-            min_x = ms.shape[0]
-        if(ms.shape[1] < min_y):
-            min_y = ms.shape[1]
+    return temp_list
+    
+def trimMS(temp_list):
+    min_x = 10**10
+    min_y = 10**10
+    
+    for ms in temp_list:
+        if(ms.shape[1] < min_x):
+            min_x = ms.shape[1]
+        if(ms.shape[2] < min_y):
+            min_y = ms.shape[2]
     ms_list = None
     for ms in temp_list:
-        center_x = (ms.shape[0]-1)/2
-        center_y = (ms.shape[1]-1)/2
+        center_x = (ms.shape[1]-1)/2
+        center_y = (ms.shape[2]-1)/2
         m_x = center_x - (min_x-1)/2
         m_y = center_y - (min_y-1)/2
-        ms = ms[m_x:m_x+min_x, m_y:m_y+min_y]
-        plt.matshow(ms)
-        plt.show()
-        ms = np.expand_dims(ms, axis=0)
+        ms = ms[:,m_x:m_x+min_x, m_y:m_y+min_y]
+        
         if(ms_list == None):
             ms_list = ms
         else:
+            print(ms_list.shape)
             ms_list = np.concatenate((ms_list, ms), axis=0)
     return ms_list
     

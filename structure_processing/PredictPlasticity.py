@@ -163,6 +163,7 @@ def predFIPs(ms, E_tot):
             for k in range(ms.shape[2]):
                 if(ms[i,j,k] != 1):
                     fips[i,j,k] = predElFIP(E_tot[:,i,j,k])
+        print("Finished row %d" % i)
     return fips
     
 if __name__ == "__main__":
