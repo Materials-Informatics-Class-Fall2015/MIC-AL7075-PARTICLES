@@ -4,8 +4,9 @@ import PredictPlasticity as PP
 import ParticleDist as PD
 import matplotlib.pyplot as plt
 import numpy as np
+import cPickle
 
-colors = ["#543005", "#8c510a", "#bf812d", "#dfc27d", "#f6e8c3", "#f5f5f5", "#c7eae5", "#80cdc1", "#35978f", "#01665e", "#003c30"]
+colors = ["#543005", "#8c510a", "#bf812d", "#dfc27d", "#80cdc1", "#35978f", "#01665e", "#003c30"]
 
 def plotHistograms(values, filters):
     filter = 1
@@ -28,6 +29,11 @@ def plotHistograms(values, filters):
         hist = np.asarray(hist, dtype=np.float_)
         hist /= float(np.sum(hist))
         centers = (bins[:-1] + bins[1:])/2
+        
+        temp_f = open("histo_%d.p" % filter, "w")
+        cPickle.dump((centers, hist), temp_f)
+        temp_f.close()
+        
         color = colors[(filter-1)%len(colors)]
         handle, = plt.plot(centers, hist, color=color)
         handles.append(handle)

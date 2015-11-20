@@ -167,6 +167,9 @@ def predFIPs(ms, E_tot):
     return fips
     
 if __name__ == "__main__":
-	E_tot = np.asarray([.001,-.0003,-.0003,0,0,0])
-	f = predElFIP(E_tot)
-	print(f)
+    E_tot = np.asarray([.001,-.0003,-.0003,0,0,0])
+    E_tot = np.reshape(E_tot, (6,1,1,1))
+    ms = np.zeros((1,1,1))
+    ms += 1
+    f = predFIPs(ms, E_tot)
+    print(f)
