@@ -2,8 +2,8 @@ import numpy as np
 from scipy.interpolate import interp1d
 
 C = np.zeros((6,6))
-E = 69000.0
-nu = 0.3
+E = 67000.0
+nu = 0.35
 diag = 1 - nu
 off = nu
 second = 1-2*nu
@@ -60,7 +60,8 @@ stress_map = [0,50,
 480.0367866,
 483.9800262,
 487.621757,
-491.0040667]
+491.0040667,
+600]
 
 pl_map = [0,0,
 2.48198E-07,
@@ -106,55 +107,62 @@ pl_map = [0,0,
 0.000697191,
 0.000739914,
 0.000787158,
-0.000838311]
+0.000838311,
+.002]
+stress_map = np.asarray(stress_map)
+stress_map *= 2.0/3.0
+max_map = np.max(stress_map)
 int_pl = interp1d(stress_map, pl_map, kind='cubic')
 
 def vToM(voigt):
-	temp = np.zeros((3,3))
-	temp[0,0] = voigt[0]
-	temp[1,1] = voigt[1]
-	temp[2,2] = voigt[2]
-	temp[0,1] = voigt[5]
-	temp[1,0] = voigt[5]
-	temp[0,2] = voigt[4]
-	temp[2,0] = voigt[4]
-	temp[1,2] = voigt[3]
-	temp[2,1] = voigt[3]
-	return temp
+    temp = np.zeros((3,3))
+    temp[0,0] = voigt[0]
+    temp[1,1] = voigt[1]
+    temp[2,2] = voigt[2]
+    temp[0,1] = voigt[5]
+    temp[1,0] = voigt[5]
+    temp[0,2] = voigt[4]
+    temp[2,0] = voigt[4]
+    temp[1,2] = voigt[3]
+    temp[2,1] = voigt[3]
+    return temp
 
 def predPl(S):
-	dev_S = S
-	h = np.sum(dev_S[:3])/3.0
-	dev_S[:3] -= h
-	temp = vToM(dev_S)
-	#print(temp)
-	eigs, dirs = np.linalg.eig(temp)
-	#print(eigs)
-	max_S = np.max(eigs)
-	pl = int_pl(max_S)
-	return pl*dev_S/max_S
-	
+    dev_S = np.copy(S)
+    h = np.sum(dev_S[:3])/3.0
+    dev_S[:3] -= h
+    temp = vToM(dev_S)
+    #print(temp)
+    eigs, dirs = np.linalg.eig(temp)
+    #print(eigs)
+    #print(dev_S)
+    max_S = np.max(eigs)
+    if(max_S > max_map):
+        print(max_S)
+    pl = int_pl(max_S)
+    return pl*dev_S/max_S
+    
 def predElFIP(E_tot):
-	""" MUST BE VOIGT ORDER 11 22 33 23 13 12 """
-	temp = np.reshape(E_tot, (6,1))
-	S = np.dot(C, temp)
-	pl = predPl(S)
-	#print(S)
-	#print(pl)
-	pl = vToM(pl)
-	S = vToM(S)
-	pl_p, pl_dirs = np.linalg.eig(pl)
-	pl_sort = np.argsort(pl_p)
-	pl_shear_dir = (pl_dirs[:,pl_sort[0]]+pl_dirs[:,pl_sort[2]])/2
-	pl_shear_dir = pl_shear_dir/np.linalg.norm(pl_shear_dir)
-	stress = np.dot(S,pl_shear_dir)
-	stress = np.dot(stress,pl_shear_dir)
-	#print(stress)
-	shear = pl_p[pl_sort[2]]-pl_p[pl_sort[0]]
-	#print(pl_p)
-	#print(pl_sort)
-	#print(shear)
-	return shear*(1+0.5*stress/517.0)
+    """ MUST BE VOIGT ORDER 11 22 33 23 13 12 """
+    temp = np.reshape(E_tot, (6,1))
+    S = np.dot(C, temp)
+    pl = predPl(S)
+    #print(S)
+    #print(pl)
+    pl = vToM(pl)
+    S = vToM(S)
+    pl_p, pl_dirs = np.linalg.eig(pl)
+    pl_sort = np.argsort(pl_p)
+    pl_shear_dir = (pl_dirs[:,pl_sort[0]]+pl_dirs[:,pl_sort[2]])/2
+    pl_shear_dir = pl_shear_dir/np.linalg.norm(pl_shear_dir)
+    stress = np.dot(S,pl_shear_dir)
+    stress = np.dot(stress,pl_shear_dir)
+    #print(stress)
+    shear = pl_p[pl_sort[2]]-pl_p[pl_sort[0]]
+    #print(pl_p)
+    #print(pl_sort)
+    #print(shear)
+    return shear*(1+0.5*np.abs(stress)/517.0)
 
 def predFIPs(ms, E_tot):
     fips = np.zeros(ms.shape)
@@ -167,9 +175,8 @@ def predFIPs(ms, E_tot):
     return fips
     
 if __name__ == "__main__":
-    E_tot = np.asarray([.001,-.0003,-.0003,0,0,0])
+    E_tot = np.asarray([0,0,0,0,0,.006])
     E_tot = np.reshape(E_tot, (6,1,1,1))
     ms = np.zeros((1,1,1))
-    ms += 1
     f = predFIPs(ms, E_tot)
     print(f)

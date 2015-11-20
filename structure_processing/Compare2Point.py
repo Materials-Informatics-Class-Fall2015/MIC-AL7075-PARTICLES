@@ -56,7 +56,7 @@ if __name__ == "__main__":
     print dir
     print dir2
     ## get our raw data (change the image names and scaling)
-    o_sc = 5
+    o_sc = 5/2.0
     images = RMS.readImages(dir, ["L-T-James-Large-refined.png","L-T-James-refined.png","L-T-James-refined-3.png","L-T-James-refined-4-t.png","L-T-James-refined-5.png","L-T-James-refined-2.png"], [o_sc/1,o_sc/(164/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(252/33.75)])
     #images = images[::-1]
     image_corr = []
@@ -76,6 +76,7 @@ if __name__ == "__main__":
     corr3d = correlate(large_ms)
     corr3d = corr3d.astype(np.float64)
     ## do 2 point stats on all the image MS
+    RMS.plotCorrelations(corr3d)
     #RMS.plotCorrelations(corr2d)
     center_x = corr2d.shape[1]/2
     center_y = corr2d.shape[2]/2
@@ -86,7 +87,7 @@ if __name__ == "__main__":
     m_y = new_size[2]/2
     corr2d = corr2d[:,center_x-m_x:center_x+p_x,center_y-m_y:center_y+p_y]
     corr2d = corr2d.astype(np.float64)
-    # RMS.plotCorrelations(corr3d)
+    
     
     ## quantify the goodness of fit for the large MS in each plane 
     center = (new_size[-1]-1)/2
