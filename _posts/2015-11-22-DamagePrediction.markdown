@@ -25,11 +25,19 @@ This function is stored in the form of tabulated data with a cubic interpolation
 **Damage Prediction**
 
 The overall stress tensor is predicted from a linear elastic stiffness with the predicted strain tensor 
+
 $$\sigma = C\varepsilon$$
+
 The deviatoric tensor is then the subtraction of the hydrostatic stress from the stress tensor
-$$S = \sigma - I*tr(\sigma)/3$$
+
+$$S = \sigma - I\frac{tr(\sigma)}{3}$$
+
 von Mises stress is represented by
-$$\bar{\sigma} = \sqrt{\frac{3}{2}S_{ij}S_{ij}}
+
+$$\bar{\sigma} = \sqrt{\frac{3}{2}S_{ij}S_{ij}}$$
+
 from there we acquire the equivalent plastic strain via our FEM data and apply this proportionally to the $S$ tensor to yield the final $\varepsilon^{p}$ tensor which is used in the damage prediction
-$$FIP_{FS} = \frac{\delta\gamma^p}{2} ( 1 + k\frac{\sigma}{\sigma_y} )$$
-and $frac{\delta\gamma^p}{2}$ is taken to be the difference in the maximum and minimum principal plastic strains.
+
+$$FIP_{FS} = \frac{\delta\gamma^p}{2} \left( 1 + k\frac{\sigma}{\sigma_y} \right)$$
+
+and $\frac{\Delta\gamma^p}{2}$ is taken to be the difference in the maximum and minimum principal plastic strains.

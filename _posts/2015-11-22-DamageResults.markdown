@@ -30,5 +30,6 @@ For this reason, both plots are restricted to the first 6 spatial bins. Another 
 The uniaxial distribution has the second peak at a higher FIP value which should degrade the fatigue lives as indicated by the literature. This is likely due to the anisotropic particle distributions oriented in the loading distribution, and indeed what we initially wanted to confirm via MKS.
 
 **Future efforts**
+
 Our final work will be to confirm the cause of the increased damage in the uniaxial loading condition as well as performing multiple predictions to understand some of the variability in fatigue lives as well.
 If these efforts are successful, the MKS predictions will be incorporated into a multi-stage fatigue life prediction using explicit cracking and long crack predictions.
