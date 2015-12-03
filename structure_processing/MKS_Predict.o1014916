@@ -1,0 +1,38 @@
+---------------------------------------
+Begin PBS Prologue Mon Nov 30 20:45:37 EST 2015
+Job ID:     1014916.dedicated-sched.pace.gatech.edu
+User ID:    pkern3
+Job name:   MKS_Predict
+Queue:      granulous
+End PBS Prologue Mon Nov 30 20:45:37 EST 2015
+---------------------------------------
+ =========================================================================
+|                                                                         |
+|       A note about all current anaconda modules:                        |
+|       Anaconda doesn’t play well with modules - once you load the       |
+|       anaconda module, module commands no longer work (not even         |
+|       module purge) unless you log out and back in again.               |
+|                                                                         |
+|       We’re working with Continuum to find a solution, but for now,     |
+|       we recommend you load the anaconda modules last if at all         |
+|       possible. Thanks!                                                 |
+|                                                                         |
+ =========================================================================
+Traceback (most recent call last):
+  File "testThings.py", line 61, in <module>
+    ms = RMS.readDirectory(pred_dir)
+  File "/nv/pg1/pkern3/mks/ReadMSFunction.py", line 17, in readDirectory
+    for f in os.listdir(directory):
+OSError: [Errno 2] No such file or directory: '/nv/pg1/pkern3/mks/data/mks/mks_predictions/1'
+---------------------------------------
+Begin PBS Epilogue Mon Nov 30 20:46:42 EST 2015
+Job ID:     1014916.dedicated-sched.pace.gatech.edu
+User ID:    pkern3
+Job name:   MKS_Predict
+Resources:  neednodes=1:ppn=32,nodes=1:ppn=32,pmem=4gb,walltime=15:00:00
+Rsrc Used:  cput=00:00:11,energy_used=0,mem=69212kb,vmem=754284kb,walltime=00:01:05
+Queue:      granulous
+Nodes:     
+iw-c29-31.pace.gatech.edu
+End PBS Epilogue Mon Nov 30 20:46:42 EST 2015
+---------------------------------------

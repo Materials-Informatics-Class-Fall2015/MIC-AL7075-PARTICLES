@@ -1,0 +1,247 @@
+---------------------------------------
+Begin PBS Prologue Mon Nov 30 21:20:25 EST 2015
+Job ID:     1014962.dedicated-sched.pace.gatech.edu
+User ID:    pkern3
+Job name:   MKS_Predict
+Queue:      granulous
+End PBS Prologue Mon Nov 30 21:20:25 EST 2015
+---------------------------------------
+ =========================================================================
+|                                                                         |
+|       A note about all current anaconda modules:                        |
+|       Anaconda doesn’t play well with modules - once you load the       |
+|       anaconda module, module commands no longer work (not even         |
+|       module purge) unless you log out and back in again.               |
+|                                                                         |
+|       We’re working with Continuum to find a solution, but for now,     |
+|       we recommend you load the anaconda modules last if at all         |
+|       possible. Thanks!                                                 |
+|                                                                         |
+ =========================================================================
+ : cannot connect to X server localhost:10.0
+[]
+['Particles.mat']
+(1, 200, 200, 200)
+final MS List shape: (1, 200, 200, 200)
+Finished FIPs
+Finished Particle Dist
+[]
+['Particles.mat']
+(1, 200, 200, 200)
+final MS List shape: (1, 200, 200, 200)
+[]
+['Particles.mat']
+(1, 200, 200, 200)
+final MS List shape: (1, 200, 200, 200)
+Finished row 0
+Finished row 1
+Finished row 2
+Finished row 3
+Finished row 4
+Finished row 5
+Finished row 6
+Finished row 7
+Finished row 8
+Finished row 9
+Finished row 10
+Finished row 11
+Finished row 12
+Finished row 13
+Finished row 14
+Finished row 15
+Finished row 16
+Finished row 17
+Finished row 18
+Finished row 19
+Finished row 20
+Finished row 21
+Finished row 22
+Finished row 23
+Finished row 24
+Finished row 25
+Finished row 26
+Finished row 27
+Finished row 28
+Finished row 29
+Finished row 30
+Finished row 31
+Finished row 32
+Finished row 33
+Finished row 34
+Finished row 35
+Finished row 36
+Finished row 37
+Finished row 38
+Finished row 39
+Finished row 40
+Finished row 41
+Finished row 42
+Finished row 43
+Finished row 44
+Finished row 45
+Finished row 46
+Finished row 47
+Finished row 48
+Finished row 49
+Finished row 50
+Finished row 51
+Finished row 52
+Finished row 53
+Finished row 54
+Finished row 55
+Finished row 56
+Finished row 57
+Finished row 58
+Finished row 59
+Finished row 60
+Finished row 61
+Finished row 62
+Finished row 63
+Finished row 64
+Finished row 65
+Finished row 66
+Finished row 67
+Finished row 68
+Finished row 69
+Finished row 70
+Finished row 71
+Finished row 72
+Finished row 73
+Finished row 74
+Finished row 75
+Finished row 76
+Finished row 77
+Finished row 78
+Finished row 79
+Finished row 80
+Finished row 81
+Finished row 82
+Finished row 83
+Finished row 84
+Finished row 85
+Finished row 86
+Finished row 87
+Finished row 88
+Finished row 89
+Finished row 90
+Finished row 91
+Finished row 92
+Finished row 93
+Finished row 94
+Finished row 95
+Finished row 96
+Finished row 97
+Finished row 98
+Finished row 99
+Finished row 100
+Finished row 101
+Finished row 102
+Finished row 103
+Finished row 104
+Finished row 105
+Finished row 106
+Finished row 107
+Finished row 108
+Finished row 109
+Finished row 110
+Finished row 111
+Finished row 112
+Finished row 113
+Finished row 114
+Finished row 115
+Finished row 116
+Finished row 117
+Finished row 118
+Finished row 119
+Finished row 120
+Finished row 121
+Finished row 122
+Finished row 123
+Finished row 124
+Finished row 125
+Finished row 126
+Finished row 127
+Finished row 128
+Finished row 129
+Finished row 130
+Finished row 131
+Finished row 132
+Finished row 133
+Finished row 134
+Finished row 135
+Finished row 136
+Finished row 137
+Finished row 138
+Finished row 139
+Finished row 140
+Finished row 141
+Finished row 142
+Finished row 143
+Finished row 144
+Finished row 145
+Finished row 146
+Finished row 147
+Finished row 148
+Finished row 149
+Finished row 150
+Finished row 151
+Finished row 152
+Finished row 153
+Finished row 154
+Finished row 155
+Finished row 156
+Finished row 157
+Finished row 158
+Finished row 159
+Finished row 160
+Finished row 161
+Finished row 162
+Finished row 163
+Finished row 164
+Finished row 165
+Finished row 166
+Finished row 167
+Finished row 168
+Finished row 169
+Finished row 170
+Finished row 171
+Finished row 172
+Finished row 173
+Finished row 174
+Finished row 175
+Finished row 176
+Finished row 177
+Finished row 178
+Finished row 179
+Finished row 180
+Finished row 181
+Finished row 182
+Finished row 183
+Finished row 184
+Finished row 185
+Finished row 186
+Finished row 187
+Finished row 188
+Finished row 189
+Finished row 190
+Finished row 191
+Finished row 192
+Finished row 193
+Finished row 194
+Finished row 195
+Finished row 196
+Finished row 197
+Finished row 198
+Finished row 199
+---------------------------------------
+Begin PBS Epilogue Mon Nov 30 22:12:24 EST 2015
+Job ID:     1014962.dedicated-sched.pace.gatech.edu
+User ID:    pkern3
+Job name:   MKS_Predict
+Resources:  neednodes=1:ppn=32,nodes=1:ppn=32,pmem=4gb,walltime=15:00:00
+Rsrc Used:  cput=00:51:43,energy_used=0,mem=1841132kb,vmem=2596488kb,walltime=00:51:59
+Queue:      granulous
+Nodes:     
+iw-c29-31.pace.gatech.edu
+End PBS Epilogue Mon Nov 30 22:12:24 EST 2015
+---------------------------------------

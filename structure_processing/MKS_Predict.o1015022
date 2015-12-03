@@ -1,0 +1,42 @@
+---------------------------------------
+Begin PBS Prologue Tue Dec  1 00:47:08 EST 2015
+Job ID:     1015022.dedicated-sched.pace.gatech.edu
+User ID:    pkern3
+Job name:   MKS_Predict
+Queue:      granulous
+End PBS Prologue Tue Dec  1 00:47:08 EST 2015
+---------------------------------------
+init.c(556):ERROR:161: Cannot initialize TCL
+init.c(556):ERROR:161: Cannot initialize TCL
+Traceback (most recent call last):
+  File "testThings.py", line 1, in <module>
+    import ReadMSFunction as RMS
+  File "/nv/pg1/pkern3/mks/ReadMSFunction.py", line 2, in <module>
+    from pymks import PrimitiveBasis
+  File "/usr/local/pacerepov1/anaconda/anaconda2/2.1.0/lib/python2.7/site-packages/pymks/__init__.py", line 4, in <module>
+    from .mks_localization_model import MKSLocalizationModel
+  File "/usr/local/pacerepov1/anaconda/anaconda2/2.1.0/lib/python2.7/site-packages/pymks/mks_localization_model.py", line 1, in <module>
+    import numpy as np
+  File "/usr/local/pacerepov1/anaconda/anaconda2/2.1.0/lib/python2.7/site-packages/numpy/__init__.py", line 172, in <module>
+    from . import add_newdocs
+  File "/usr/local/pacerepov1/anaconda/anaconda2/2.1.0/lib/python2.7/site-packages/numpy/add_newdocs.py", line 13, in <module>
+    from numpy.lib import add_newdoc
+  File "/usr/local/pacerepov1/anaconda/anaconda2/2.1.0/lib/python2.7/site-packages/numpy/lib/__init__.py", line 8, in <module>
+    from .type_check import *
+  File "/usr/local/pacerepov1/anaconda/anaconda2/2.1.0/lib/python2.7/site-packages/numpy/lib/type_check.py", line 11, in <module>
+    import numpy.core.numeric as _nx
+  File "/usr/local/pacerepov1/anaconda/anaconda2/2.1.0/lib/python2.7/site-packages/numpy/core/__init__.py", line 6, in <module>
+    from . import multiarray
+AttributeError: PyCapsule_Import "datetime.datetime_CAPI" is not valid
+---------------------------------------
+Begin PBS Epilogue Tue Dec  1 00:47:13 EST 2015
+Job ID:     1015022.dedicated-sched.pace.gatech.edu
+User ID:    pkern3
+Job name:   MKS_Predict
+Resources:  neednodes=1:ppn=32,nodes=1:ppn=32,pmem=4gb,walltime=15:00:00
+Rsrc Used:  cput=00:00:00,energy_used=0,mem=0kb,vmem=0kb,walltime=00:00:07
+Queue:      granulous
+Nodes:     
+iw-k30-6.pace.gatech.edu
+End PBS Epilogue Tue Dec  1 00:47:13 EST 2015
+---------------------------------------

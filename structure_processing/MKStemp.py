@@ -113,7 +113,7 @@ if __name__ == "__main__":
     TrainPredict(oldVersion, sys.argv)
     
     
-def TrainPredict(oldVersion, args):
+def TrainPredict(oldVersion, args, loads=[0,0,0,0,0,0.0035]):
     old_dir = os.getcwd()
     if not oldVersion:
         import sys
@@ -135,8 +135,8 @@ def TrainPredict(oldVersion, args):
         # loads = [-.00073*1.5,.002*1.5,-.00073*1.5,0,0,0]
         # loads = [-.000719,.00199,-.000718,4.45e-7,4.7e-8,-1.3e-7]
         # loads = [0,.00199,0,0,0,0]
-        loads = [.002*-.3595,.002,.002*-.3595,0,0,0]
-        # loads = [0,0,0,0,0,0.004]
+        # loads = [.002*-.3595,.002,.002*-.3595,0,0,0]
+        
         try:
             ms_list = RMS.readDirectory(dir_test)
             strain_list_test = RR.readDirectory(dir_test)
@@ -159,7 +159,7 @@ def TrainPredict(oldVersion, args):
             
         else:
             ms_list = RMS.readDirectory(dir_test)
-            ms_list = ms_list[:,:101,:101,:101]
+            #ms_list = ms_list[:,:31,:31,:31]
             strain_pred = predictArbitraryStrain(models, loads, ms_list)
             os.chdir(dir_test)
             #writeOutputs(strain_pred)

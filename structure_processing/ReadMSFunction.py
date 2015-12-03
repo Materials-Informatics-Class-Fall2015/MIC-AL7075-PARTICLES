@@ -17,7 +17,7 @@ def readDirectory(directory):
     for f in os.listdir(directory):
         if(f.find("trial_Phases")!=-1 and f.find("_old")==-1):
             filenames.append(f)
-        elif(f.find(".mat")==(len(f)-4)):
+        elif(f.find(".mat")>0 and f.find(".mat")==(len(f)-4)):
             mat_files.append(f)
     print(filenames)
     print(mat_files)

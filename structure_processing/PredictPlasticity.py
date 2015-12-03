@@ -109,8 +109,8 @@ pl_map = [0,0,
 0.000787158,
 0.000838311,
 .002]
+## maps equivalent plastic strain from uniaxial test to the von Mises stress
 stress_map = np.asarray(stress_map)
-stress_map *= 2.0/3.0
 max_map = np.max(stress_map)
 int_pl = interp1d(stress_map, pl_map, kind='cubic')
 
@@ -132,15 +132,12 @@ def predPl(S):
     h = np.sum(dev_S[:3])/3.0
     dev_S[:3] -= h
     temp = vToM(dev_S)
-    #print(temp)
-    eigs, dirs = np.linalg.eig(temp)
-    #print(eigs)
-    #print(dev_S)
-    max_S = np.max(eigs)
-    if(max_S > max_map):
-        print(max_S)
-    pl = int_pl(max_S)
-    return pl*dev_S/max_S
+    von_S = (3.0/2*np.sum(temp**2))**.5
+    if(von_S > max_map):
+        print(von_S)
+    pl = int_pl(von_S)
+    eq = (2.0/3*np.sum(temp**2))**.5
+    return pl*dev_S/eq
     
 def predElFIP(E_tot):
     """ MUST BE VOIGT ORDER 11 22 33 23 13 12 """
