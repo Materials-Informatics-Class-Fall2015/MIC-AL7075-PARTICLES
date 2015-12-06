@@ -55,6 +55,7 @@ def get2Points(dir_img, dir_recon):
     ## get our raw data (change the image names and scaling)
     o_sc = 5/2.0
     images = RMS.readImages(dir_img, ["L-T-James-Large-refined.png","L-T-James-refined.png","L-T-James-refined-3.png","L-T-James-refined-4-t.png","L-T-James-refined-5.png","L-T-James-refined-2.png"], [o_sc/1,o_sc/(164/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(248/33.75),o_sc/(252/33.75)])
+    #images = RMS.readImages(dir_img, ["L-T-James-refined.png"], [o_sc/(248/33.75)])
     #images = images[::-1]
     image_corr = []
     prim_basis = PrimitiveBasis(2, [0, 1])
