@@ -24,12 +24,17 @@ We want to be able to predict the life-limiting FIP for a given particle cluster
 **Data**
 
 We have 6 microstructure images taken from multiple samples all in the short transverse plane. A 21x21x21 microstructure created from delta microstructures was used to train the 6 strain tensor MKS models. The six microstructure images range from 100x100 to 1200x1200 $\mu$m were used in the creation of 10 200x200x200 element microstructure reconstructions.
+
+Example Microstructure Image:
 ![An example of one of the microstructure images](/MIC-AL7075-PARTICLES/img/Presentation_Images/refined-4.png)
+3D Reconstruction:
 ![Reconstruction](/MIC-AL7075-PARTICLES/img/3D_reconstruction_2.png)
 
 **Workflow**
 
 In general, our modeling process began with training our model using delta microstructures. We then tested our model under the different loading conditions and created quantifications of error to understand issues with the model. The errors for the 5 21x21x21 validation microstructures can be seen here.
+
+Validation Errors for Uniaxial Loading
 ![Validation Errors For Uniaxial 0.002 Loading](/MIC-AL7075-PARTICLES/img/Presentation_Images/MKS_errors.png)
  These error quantifications were used to verify the model before we predicted strain fields for the large microstructure reconstructions. We finally predict FIPs using MKS method on several very large reconstructions. The branching nature of our workflow is shown below.
 
@@ -52,11 +57,11 @@ The difference in sensitivity is readily apparent in the differences between the
 
 Random Particle Matrix Auto-Correlation:
 ![Random Particle Matrix Auto-Correlation](/MIC-AL7075-PARTICLES/img/random_matrix_auto.png)
-Trimmed Reconstruction Particle Auto-Correlation
+Trimmed Reconstruction Particle Auto-Correlation:
 ![Trimmed Reconstruction Particle Auto-Correlation](/MIC-AL7075-PARTICLES/img/recon_particles_autoTrimExample.png)
-The MSE for the randomized microstructure is seen below
+MSE for the Randomized Microstructure:
 ![Random](/MIC-AL7075-PARTICLES/img/MSE_random_stringer.png)
-And the MSE for the reconstruction:
+MSE for the Reconstruction:
 ![Reconstruction](/MIC-AL7075-PARTICLES/img//MSE_recon_stringer.png)
 
 **Results**
@@ -98,7 +103,7 @@ We would like to thank the following people:
 * Rollett, Anthony D., Robert Campman, and David Saylor. "Three dimensional microstructures: statistical analysis of second phase particles in AA7075-T651." Materials science forum. Vol. 519. 2006.
 * Fatemi, Ali, and Darrell F. Socie. "A Critical Plane Approach to Multiaxial Fatigue Damage Including out‐of‐Phase Loading." Fatigue & Fracture of Engineering Materials & Structures 11.3 (1988): 149-165.
 * Zhao, Tianwen, and Yanyao Jiang. "Fatigue of 7075-T651 aluminum alloy." International Journal of Fatigue 30.5 (2008): 834-849.
-
+* Harris, James Joel. "Particle cracking damage evolution in 7075 wrought aluminum alloy under monotonic and cyclic loading conditions." (2005).
 
 
 
