@@ -17,20 +17,23 @@ The current fatigue life calibration has very conservative shear life prediction
 ![Shear Lives](/MIC-AL7075-PARTICLES/img/shear_lives.png)
 
 **Problem Statement/Objectives**
+
 We want to be able to predict the life-limiting FIP for a given particle cluster, load amplitude, and load biaxiality. We will be using the Fatemi-Socie FIP to quantify fatigue lives, defined by $$FIP_{FS} = \frac{\gamma}{2} ( 1 + k\frac{\sigma}{\sigma_y} )$$. In this equation $\sigma$ is the tension on the maximum shear plane, $\sigma_y$ is the cyclic yield stress, $\frac{\gamma}{2}$ is the maximum plastic shear and k is a calibration constant for multi-axial fatigue (usually taken as 0.5). In this particular project, we have investigated the non-local averaged FIP surrounding the particles. An averaging volume of ~5% particle volume is used. The maximum of these FIP determines the life-limiting crack extension into the matrix.
 
 **Data**
 We have 6 microstructure images taken from multiple samples all in the short transverse plane. A 21x21x21 microstructure created from delta microstructures was used to train the 6 strain tensor MKS models. The six microstructure images range from 100x100 to 1200x1200 um were used in the creation of 10 200x200x200 element microstructure reconstructions.
 ![An example of one of the microstructure images](/MIC-AL7075-PARTICLES/img/Presentation_Images/refined-4.png)
-![Reconstruction](/MIC-AL7075-PARTICLES/img/3D_reconstruction.png)
+![Reconstruction](/MIC-AL7075-PARTICLES/img/3D_reconstruction_2.png)
 
 **Workflow**
+
 In general, our modeling process began with training our model using delta microstructures. We then tested our model under the different loading conditions and created quantifications of error to understand issues with the model. The errors for the 5 21x21x21 validation microstructures can be seen here.
 ![Validation Errors For Uniaxial 0.002 Loading](/MIC-AL7075-PARTICLES/img/Presentation_Images/MKS_errors.png)
  These error quantifications were used to verify the model before we predicted strain fields for the large microstructure reconstructions. We finally predict FIPs using MKS method on several very large reconstructions.
 ![Workflow](/MIC-AL7075-PARTICLES/img/workflow.png)
 
 **Project Challenges**
+
 One of the first challenges we encountered was simply upon how to define distance measured to the nearest particle for the purposes of binning error and FIP distributions. Our original plan involved using Manhattan distance measurements (due to the constant strain in each element), however our error quantifications found this to be a non-desirable way to measure distance. Therefore we ended up deciding on using euclidean distance for our measurements.
 When we proceeded to the training section using delta microstructures in the MKS method, we initially used different Poisson ratios between the particle and matrix phases to a negative outcome on our predictions. After changing the Poisson ratio for the particle phase to match the matrix, our results improved drastically.
 
@@ -48,23 +51,34 @@ And the MSE for the reconstruction
 ![Reconstruction](/MIC-AL7075-PARTICLES/img//MSE_recon_stringer.png)
 
 **Results**
+
 Seen below are the fatigue predictions for both shear and uniaxial loadings. 
 Several interesting features become readily apparent in the plots here. The first is that both loading conditions do indeed quickly approach a far-field condition. For this reason, both plots are restricted to the first 6 spatial bins. Another feature is that both loading conditions appear to produce a bimodal distribution. The uniaxial distribution's peak at the higher FIP value represents a larger relative intensification than that of the shear FIP distribution. The FIP values are still found to be higher in the shear loading condition, however, so while the intensification aspect is proved due to the anisotropic particle distribution, it is still insufficient to capture the discrepancy in our current fatigue model when compared to the literature results.
 ![Shear](/MIC-AL7075-PARTICLES/img/shear.png)
 ![Uniaxial](/MIC-AL7075-PARTICLES/img/uni.png)
 
 **Conclusions**
+
 Our work does seem to provide some evidence that the anisotropic distribution of particles contributes to the knock down in fatigue lives for uniaxial loadings, however the effect is not pronounced enough to fully explain the difference from experimental results in the literature.
-Clearly the . The final differences in fatigue lives likely come from the interaction of the crack and particles which will need to be modeled by different methods due to the contrast issue inherent with a very low stiffness crack in any material.
+There appear to still be missing physical basis to the models explored during this project and outside of it. This correction in fatigue lives could possibly come from more complex 3D interactions between crack and particles which will need to be modeled by different methods due to the contrast issue inherent with a very low stiffness crack in any material.
 
 **Acknowledgements**
+
+We would like to thank the following people:
+
 * Dr. Kalidindi for his guidance in this project and the process of learning material informatics in general.
 * Dr. McDowell for the encouragement to pursue new simulation methods.
 * David Brough for letting us bounce ideas around and creating the pyMKS framework that we utilized extensively.
 * Yuksel Yabansu for answering our questions about MKS.
+* David Turner for producing the reconstruction code we utilized.
 * NSF FLAMEL Program and NAVAIR for providing this class and project as well as the funding for our group
 
-** 
+**References**
+* Rollett, Anthony D., Robert Campman, and David Saylor. "Three dimensional microstructures: statistical analysis of second phase particles in AA7075-T651." Materials science forum. Vol. 519. 2006.
+* Fatemi, Ali, and Darrell F. Socie. "A Critical Plane Approach to Multiaxial Fatigue Damage Including out‐of‐Phase Loading." Fatigue & Fracture of Engineering Materials & Structures 11.3 (1988): 149-165.
+* Zhao, Tianwen, and Yanyao Jiang. "Fatigue of 7075-T651 aluminum alloy." International Journal of Fatigue 30.5 (2008): 834-849.
+
+
 
 
 [post1]: http://materials-informatics-class-fall2015.github.io/MIC-grain-growth/2015/09/19/it-is-of-wise-men-to-change-opinions-and-projects/ 
