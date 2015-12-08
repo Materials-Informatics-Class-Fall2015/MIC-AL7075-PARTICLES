@@ -34,7 +34,7 @@ Example Microstructure Image:
 
 In general, our modeling process began with training our model using delta microstructures. We then tested our model under the different loading conditions and created quantifications of error to understand issues with the model. The errors for the 5 21x21x21 validation microstructures can be seen here.
 
-Validation Errors for Uniaxial Loading
+Validation Errors for Uniaxial Loading:
 ![Validation Errors For Uniaxial 0.002 Loading](/MIC-AL7075-PARTICLES/img/Presentation_Images/MKS_errors.png)
  These error quantifications were used to verify the model before we predicted strain fields for the large microstructure reconstructions. We finally predict FIPs using MKS method on several very large reconstructions. The branching nature of our workflow is shown below.
 
