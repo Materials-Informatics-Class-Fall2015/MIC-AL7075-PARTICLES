@@ -21,7 +21,7 @@ The current fatigue life calibration has very conservative shear life prediction
 We want to be able to predict the life-limiting FIP for a given particle cluster, load amplitude, and load biaxiality. We will be using the Fatemi-Socie FIP to quantify fatigue lives, defined by $$FIP_{FS} = \frac{\gamma}{2} ( 1 + k\frac{\sigma}{\sigma_y} )$$. In this equation $\sigma$ is the tension on the maximum shear plane, $\sigma_y$ is the cyclic yield stress, $\frac{\gamma}{2}$ is the maximum plastic shear and k is a calibration constant for multi-axial fatigue (usually taken as 0.5). In this particular project, we have investigated the non-local averaged FIP surrounding the particles. An averaging volume of ~5% particle volume is used. The maximum of these FIP determines the life-limiting crack extension into the matrix.
 
 **Data**
-We have 6 microstructure images taken from multiple samples all in the short transverse plane. A 21x21x21 microstructure created from delta microstructures was used to train the 6 strain tensor MKS models. The six microstructure images range from 100x100 to 1200x1200 um were used in the creation of 10 200x200x200 element microstructure reconstructions.
+We have 6 microstructure images taken from multiple samples all in the short transverse plane. A 21x21x21 microstructure created from delta microstructures was used to train the 6 strain tensor MKS models. The six microstructure images range from 100x100 to 1200x1200 $\mu$m were used in the creation of 10 200x200x200 element microstructure reconstructions.
 ![An example of one of the microstructure images](/MIC-AL7075-PARTICLES/img/Presentation_Images/refined-4.png)
 ![Reconstruction](/MIC-AL7075-PARTICLES/img/3D_reconstruction_2.png)
 
@@ -31,6 +31,8 @@ In general, our modeling process began with training our model using delta micro
 ![Validation Errors For Uniaxial 0.002 Loading](/MIC-AL7075-PARTICLES/img/Presentation_Images/MKS_errors.png)
  These error quantifications were used to verify the model before we predicted strain fields for the large microstructure reconstructions. We finally predict FIPs using MKS method on several very large reconstructions.
 ![Workflow](/MIC-AL7075-PARTICLES/img/workflow.png)
+
+For more information on the specific implementation of MKS we used and the process of training and using influence coefficients, please see ([here][pymks]) 
 
 **Project Challenges**
 
@@ -57,6 +59,8 @@ Several interesting features become readily apparent in the plots here. The firs
 ![Shear](/MIC-AL7075-PARTICLES/img/shear.png)
 ![Uniaxial](/MIC-AL7075-PARTICLES/img/uni.png)
 
+Finally, we apply a volumetric averaging method using a Gaussian filter to limit extreme value problems inherent in the discretized nature of our domain. This filter is given a standard deviation of 0.5 elements which equates to a volume of ~ 1 $\mu$m
+
 **Conclusions**
 
 Our work does seem to provide some evidence that the anisotropic distribution of particles contributes to the knock down in fatigue lives for uniaxial loadings, however the effect is not pronounced enough to fully explain the difference from experimental results in the literature.
@@ -81,6 +85,7 @@ We would like to thank the following people:
 
 
 
-[post1]: http://materials-informatics-class-fall2015.github.io/MIC-grain-growth/2015/09/19/it-is-of-wise-men-to-change-opinions-and-projects/ 
+[post1]: http://materials-informatics-class-fall2015.github.io/MIC-AL7075-PARTICLES/2015/10/31/PoissonRatio/
+[pymks]: http://materialsinnovation.github.io/pymks/rst/elasticity_3D.html
 
 
