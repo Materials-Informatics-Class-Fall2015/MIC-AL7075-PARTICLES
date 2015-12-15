@@ -9,9 +9,8 @@ import cPickle
 import os
 
 dir_img = "C:\Users\pkern3\Documents\MIC-AL7075-PARTICLES\img\Microstructures_Images"
-dir_recon = "C:\Users\pkern3\Documents\MIC-AL7075-PARTICLES\large_predict"
+dir_recon = "C:\\Users\\pkern3\\Documents\\MIC-AL7075-PARTICLES\\large_predict\\random"
 labels = ["Scan 1", "Scan 2", "Scan 3", "Scan 4", "Scan 5", "Scan 6", "Reconstruction"]
-
 corr2d, corr3d = C2P.get2Points(dir_img, dir_recon)
 for i in range(corr2d.shape[0]):
     corr2d[i,:,:,0] /= corr2d[i,99,99,0]

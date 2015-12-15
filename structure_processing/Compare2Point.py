@@ -25,8 +25,8 @@ def getErrors(corr1, corr2):
     diff = temp1 - temp2
     #diff = diff[(center_x-35):(center_x+35),(center_y-35):(center_y+35)]
     print("max diff %f, max val 1 %f, min val 1 %f, max val 2 %f, min val 2 %f" % (np.max(np.abs(diff)), np.max(temp1), np.min(temp1), np.max(temp2), np.min(temp2)))
-    plt.matshow(diff)
-    plt.show()
+    #plt.matshow(diff)
+    #plt.show()
     raw_se = (diff)**2
     mse = np.average(raw_se)
     raw_ae = np.abs(diff)
@@ -74,7 +74,7 @@ def get2Points(dir_img, dir_recon):
     corr3d = correlate(large_ms)
     corr3d = corr3d.astype(np.float64)
     ## do 2 point stats on all the image MS
-    #RMS.plotCorrelations(corr3d)
+    RMS.plotCorrelations(corr3d)
     #RMS.plotCorrelations(corr2d)
     center_x = corr2d.shape[1]/2
     center_y = corr2d.shape[2]/2

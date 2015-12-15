@@ -159,7 +159,7 @@ def TrainPredict(oldVersion, args, loads=[0,0,0,0,0,0.0035]):
             
         else:
             ms_list = RMS.readDirectory(dir_test)
-            #ms_list = ms_list[:,:31,:31,:31]
+            ms_list = ms_list[:,:100,:100,:100]
             strain_pred = predictArbitraryStrain(models, loads, ms_list)
             os.chdir(dir_test)
             #writeOutputs(strain_pred)
